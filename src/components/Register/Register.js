@@ -35,7 +35,7 @@ class Register extends Component {
             value={this.state.value}
           />
           <input
-            type="test"
+            type="text"
             name="username"
             placeholder="Username"
             onChange={this.handleChanges}
