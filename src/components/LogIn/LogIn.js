@@ -27,7 +27,7 @@ class LogIn extends Component {
           autoComplete="off"
         >
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="Email address"
             onChange={this.handleChanges}
