@@ -4,9 +4,9 @@ export const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
   return axios.create({
     headers: {
-      // 'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
       Authorization: token
     },
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://stockly-backend.herokuapp.com'
   });
 };

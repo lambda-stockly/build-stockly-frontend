@@ -14,8 +14,9 @@
     "react-spinners": "^0.5.4",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
+    "redux-thunk": "^2.3.0"
     "reset-css": "^4.0.1"
+
   },
   "scripts": {
     "start": "react-scripts start",
