@@ -12,7 +12,7 @@ const initialState = {
   isRegistering: false,
   token: localStorage
 };
-
+//comment from origin ruben-ponce
 export const empReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
