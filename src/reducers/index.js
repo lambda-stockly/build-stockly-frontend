@@ -10,10 +10,10 @@ import {
 const initialState = {
   isLoggingIn: false,
   isRegistering: false,
-  token: localStorage
+  token: localStorage.getItem('token')
 };
 
-export const empReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
       return {

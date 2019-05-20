@@ -35,6 +35,11 @@ code {
     monospace;
 }
 
+
+// Variables
+$cyan: #5ae5dd;
+$dark-navy: #0d122b;
+$faded-navy: #0d122b;
 h1,
 h2,
 h3,
@@ -43,6 +48,7 @@ h5 {
   font-family: $heading-font-family;
   font-weight: 700;
 }
+
 
 h1 {
   font-size: 40px;
