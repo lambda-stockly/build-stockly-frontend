@@ -5,17 +5,13 @@ import { connect } from 'react-redux';
 class Register extends Component {
   state = {
     email: '',
-    user: {
-      username: '',
-      password: ''
-    }
+    username: '',
+    password: ''
   };
 
   handleChanges = e => {
     this.setState({
-      user: {
-        [e.target.name]: e.target.value
-      }
+      [e.target.name]: e.target.value
     });
   };
 

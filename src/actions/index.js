@@ -19,8 +19,8 @@ export const login = creds => dispatch => {
     .post('https://stockly-backend.herokuapp.com/auth/login', creds)
     .then(res => {
       console.log(res.data);
-      localStorage.setItem('token', res.data.payload);
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
+      localStorage.setItem('token', res.data.token);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
     })
     .catch(err => console.log(err));
 };
@@ -32,12 +32,15 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const register = creds => dispatch => {
   //passes ({email, password, username}) payload to `/auth/register`, and server returns returns a ({token, user:{username,password}})
   dispatch({ type: REGISTER_START });
+  console.log(creds);
   return axios
     .post('https://stockly-backend.herokuapp.com/auth/register', creds)
+
     .then(res => {
       console.log(res.data);
-      // localStorage.setItem('token', res.data);
-      dispatch({ type: REGISTER_SUCCESS, payload: res.data.payload });
+      localStorage.setItem('token', res.data.token);
+
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
     })
     .catch(err => console.log(err));
 };
