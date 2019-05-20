@@ -6,7 +6,7 @@ register()
 */
 
 import axios from 'axios';
-// import {axiosWithAuth} from '../axiosWithAuth'
+import { axiosWithAuth } from '../components/auth/axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -16,7 +16,7 @@ export const login = creds => dispatch => {
   //passes ({email, password}) payload to `/auth/login`, and server checks if they are correct, if so, res.data returns a token and User Object
   dispatch({ type: LOGIN_START });
   return axios
-    .post('http://localhost:5000/auth/login', creds)
+    .post('https://stockly-backend.herokuapp.com/auth/login', creds)
     .then(res => {
       console.log(res.data);
       localStorage.setItem('token', res.data.payload);
@@ -33,10 +33,10 @@ export const register = creds => dispatch => {
   //passes ({email, password, username}) payload to `/auth/register`, and server returns returns a ({token, user:{username,password}})
   dispatch({ type: REGISTER_START });
   return axios
-    .post('http://localhost:5000/auth/register', creds)
+    .post('https://stockly-backend.herokuapp.com/auth/register', creds)
     .then(res => {
       console.log(res.data);
-      localStorage.setItem('token', res.data.payload);
+      // localStorage.setItem('token', res.data);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.payload });
     })
     .catch(err => console.log(err));
