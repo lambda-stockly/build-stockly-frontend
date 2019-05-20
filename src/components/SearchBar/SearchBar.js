@@ -3,6 +3,7 @@ import './SearchBar.scss';
 import Autosuggest from 'react-autosuggest';
 // import languages from '../../languages';
 import data from './data';
+import APIkey from '../Config';
 // import axios from 'axios';
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -47,7 +48,7 @@ class SearchBar extends React.Component {
   }
 
   // getData = async e => {
-  //   const API_KEY = '9C4D6OQ5WBMFCXQ9';
+  //   const API_KEY = APIkey;
   //   const keywords = this.state.value;
   //   const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keywords}&apikey=${API_KEY}`;
   //   await axios
