@@ -1,5 +1,11 @@
-* {
+html {
   box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -17,9 +23,13 @@ code {
 }
 
 // Variables
-$primary-color: #2196f3;
-// $secondary-color: #2196f3;
-// $accent-color: #2196f3;
+$cyan: #5ae5dd;
+$dary-navy: #0d122b;
+$faded-navy: #0d122b;
 
-// $display-font:
-// $body-font
+$primary-color: $cyan;
+$secondary-color: $dark-navy;
+$accent-color: $faded-navy;
+$faded-cyan: #e0fcf9;
+$light-grey: #f9f9f9;
+$white: #fff;
