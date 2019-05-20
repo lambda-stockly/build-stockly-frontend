@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import './Register.scss';
-
+import { register } from '../../actions';
+import { connect } from 'react-redux';
 class Register extends Component {
   state = {
     email: '',
-    username: '',
-    password: ''
+    user: {
+      username: '',
+      password: ''
+    }
   };
 
   handleChanges = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      user: {
+        [e.target.name]: e.target.value
+      }
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.register({ ...this.state }).then(() => {
+      this.props.history.push('/home');
+    });
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="Register">
         <h1 className="Register__Title">Sign Up</h1>
@@ -54,5 +63,13 @@ class Register extends Component {
     );
   }
 }
-
-export default Register;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    isRegistering: state.isRegistering
+  };
+};
+export default connect(
+  mapStateToProps,
+  { register }
+)(Register);

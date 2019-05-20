@@ -18,7 +18,7 @@ class LogIn extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.login({ ...this.state }).then(() => {
-      this.props.history.push('/protected');
+      this.props.history.push('/home');
     });
   };
 

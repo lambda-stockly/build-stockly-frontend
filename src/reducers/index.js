@@ -31,21 +31,20 @@ export const rootReducer = (state = initialState, action) => {
         isLoggingIn: false
       };
 
-    //     case REGISTER_START:
-    //     return {
-    //       ...state,
-    //       isRegistering: true
-    //     };
-    //   case REGISTER_SUCCESS:
-    //     return {
-    //       ...state,
-    //
-    //     };
-    //   case REGISTER_FAILURE:
-    //     return {
-    //       ...state,
-    //       isRegistering: false
-    //     };
+    case REGISTER_START:
+      return {
+        ...state,
+        isRegistering: true
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state
+      };
+    case REGISTER_FAILURE:
+      return {
+        ...state,
+        isRegistering: false
+      };
 
     default:
       return state;

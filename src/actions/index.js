@@ -1,3 +1,10 @@
+/*
+_____AVAILABLE ACTIONS_____
+login() 
+register()
+
+*/
+
 import axios from 'axios';
 // import {axiosWithAuth} from '../axiosWithAuth'
 
@@ -36,3 +43,4 @@ export const register = creds => dispatch => {
 };
 
 //request data from alphavantage
+//axios with auth, display data
