@@ -1,3 +1,18 @@
+// Variables
+$cyan: #5ae5dd;
+$dark-navy: #0d122b;
+$faded-navy: #0d122b;
+
+$primary-color: $cyan;
+$secondary-color: $dark-navy;
+$accent-color: $faded-navy;
+$faded-cyan: #e0fcf9;
+$light-grey: #f9f9f9;
+$white: #fff;
+
+$body-font-family: 'Merriweather Sans', sans-serif;
+$heading-font-family: 'Merriweather Sans', sans-serif;
+
 html {
   box-sizing: border-box;
 }
@@ -10,9 +25,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: $body-font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,14 +35,37 @@ code {
     monospace;
 }
 
+
 // Variables
 $cyan: #5ae5dd;
 $dark-navy: #0d122b;
 $faded-navy: #0d122b;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $heading-font-family;
+  font-weight: 700;
+}
 
-$primary-color: $cyan;
-$secondary-color: $dark-navy;
-$accent-color: $faded-navy;
-$faded-cyan: #e0fcf9;
-$light-grey: #f9f9f9;
-$white: #fff;
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 12px;
+}
