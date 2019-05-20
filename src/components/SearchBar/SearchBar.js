@@ -1,10 +1,9 @@
 import React from 'react';
 import './SearchBar.scss';
 import Autosuggest from 'react-autosuggest';
-// import languages from '../../languages';
 import data from './data';
-import APIkey from '../Config';
-// import axios from 'axios';
+import axios from 'axios';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
@@ -47,20 +46,19 @@ class SearchBar extends React.Component {
     };
   }
 
-  // getData = async e => {
-  //   const API_KEY = APIkey;
-  //   const keywords = this.state.value;
-  //   const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keywords}&apikey=${API_KEY}`;
-  //   await axios
-  //     .get(url)
-  //     .then(res => {
-  //       console.log(res.data.bestMatches);
-  //       this.setState({ suggestions: res.data.bestMatches });
-  //       // this.setState({ results: res.data });
-  //       // console.log(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getData = async e => {
+    const keywords = this.state.value;
+    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keywords}&apikey=${API_KEY}`;
+    await axios
+      .get(url)
+      .then(res => {
+        console.log(res.data.bestMatches);
+        this.setState({ suggestions: res.data.bestMatches });
+        // this.setState({ results: res.data });
+        // console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  };
 
   onChange = (event, { newValue }) => {
     this.setState({
@@ -84,6 +82,7 @@ class SearchBar extends React.Component {
   };
 
   render() {
+    console.log(API_KEY);
     const { value, suggestions } = this.state;
 
     // Autosuggest will pass through all these props to the input.

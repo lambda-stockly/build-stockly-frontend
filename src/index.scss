@@ -1,8 +1,11 @@
+@import '~reset-css/sass/reset';
+
 // Variables
+
+// Colors
 $cyan: #5ae5dd;
 $dark-navy: #0d122b;
 $faded-navy: #0d122b;
-
 $primary-color: $cyan;
 $secondary-color: $dark-navy;
 $accent-color: $faded-navy;
@@ -10,6 +13,7 @@ $faded-cyan: #e0fcf9;
 $light-grey: #f9f9f9;
 $white: #fff;
 
+// Fonts
 $body-font-family: 'Merriweather Sans', sans-serif;
 $heading-font-family: 'Merriweather Sans', sans-serif;
 
@@ -35,10 +39,6 @@ code {
     monospace;
 }
 
-// Variables
-$cyan: #5ae5dd;
-$dark-navy: #0d122b;
-$faded-navy: #0d122b;
 h1,
 h2,
 h3,
@@ -51,19 +51,15 @@ h5 {
 h1 {
   font-size: 40px;
 }
-
 h2 {
   font-size: 32px;
 }
-
 h3 {
   font-size: 24px;
 }
-
 h4 {
   font-size: 16px;
 }
-
 h5 {
   font-size: 12px;
 }
