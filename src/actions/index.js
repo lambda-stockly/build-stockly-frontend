@@ -34,3 +34,5 @@ export const register = creds => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+//request data from alphavantage
