@@ -3,6 +3,7 @@ import './LogIn.scss';
 import { connect } from 'react-redux';
 import { login } from '../../actions';
 import { BeatLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 class LogIn extends Component {
   state = {
     email: '',
@@ -17,15 +18,24 @@ class LogIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.props);
     this.props.login({ ...this.state }).then(() => {
-      this.props.history.push('/home');
+      this.props.history.push('/');
     });
   };
 
   render() {
     return (
       <div className="LogIn">
-        <h1 className="LogIn__Title">Sign in</h1>
+        <h1
+          className="LogIn__Title"
+          style={{ textAlign: 'center', display: 'block' }}
+        >
+          Sign in
+        </h1>
+        <Link to="/register" style={{ textAlign: 'center', display: 'block' }}>
+          Register
+        </Link>
 
         <form
           className="LogIn__Form"
@@ -33,14 +43,14 @@ class LogIn extends Component {
           autoComplete="off"
         >
           <input
-            // type="email"
+            type="email"
             name="email"
             placeholder="Email address"
             onChange={this.handleChanges}
             value={this.state.value}
           />
           <input
-            // type="password"
+            type="password"
             name="password"
             placeholder="Password"
             onChange={this.handleChanges}

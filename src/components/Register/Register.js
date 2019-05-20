@@ -22,17 +22,17 @@ class Register extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.register({ ...this.state }).then(() => {
-      this.props.history.push('/home');
+      this.props.history.push('/');
     });
   };
 
   render() {
     console.log(this.props);
     return (
-      <div className="Register">
-        <h1 className="Register__Title">Sign Up</h1>
+      <div className="register">
+        <h1>Sign Up</h1>
         <form
-          className="Register__Form"
+          className="register-form"
           onSubmit={this.handleSubmit}
           autoComplete="off"
         >
