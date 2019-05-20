@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './StocklyApp.scss';
-
 class StocklyApp extends Component {
   render() {
     return (
