@@ -10,7 +10,7 @@ import {
 const initialState = {
   isLoggingIn: false,
   isRegistering: false,
-  token: localStorage
+  token: localStorage.getItem('token')
 };
 
 export const rootReducer = (state = initialState, action) => {

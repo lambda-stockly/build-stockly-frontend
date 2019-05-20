@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './LogIn.scss';
-
+import { connect } from 'react-redux';
+import { login } from '../../actions';
+import { BeatLoader } from 'react-spinners';
 class LogIn extends Component {
   state = {
     email: '',
@@ -15,36 +17,52 @@ class LogIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.login({ ...this.state }).then(() => {
+      this.props.history.push('/protected');
+    });
   };
 
   render() {
     return (
       <div className="LogIn">
         <h1 className="LogIn__Title">Sign in</h1>
+
         <form
           className="LogIn__Form"
           onSubmit={this.handleSubmit}
           autoComplete="off"
         >
           <input
-            type="email"
+            // type="email"
             name="email"
             placeholder="Email address"
             onChange={this.handleChanges}
             value={this.state.value}
           />
           <input
-            type="password"
+            // type="password"
             name="password"
             placeholder="Password"
             onChange={this.handleChanges}
             value={this.state.value}
           />
-          <button type="submit">Sign In</button>
+          <button type="submit">
+            {this.props.isLoggingIn ? <BeatLoader /> : 'Sign In'}
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default LogIn;
+const mapStateToProps = state => {
+  console.log(state, 'current state');
+  return {
+    isLoggingIn: state.isLoggingIn
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(LogIn);
