@@ -95,7 +95,7 @@ class StockInfo extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let color;
     if (this.state.change < 0) {
       color = 'colorRed';
