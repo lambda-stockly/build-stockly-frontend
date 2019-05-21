@@ -14,3 +14,12 @@ $white: #fff;
 // Fonts
 $body-font-family: 'Merriweather Sans', sans-serif;
 $heading-font-family: 'Merriweather Sans', sans-serif;
+
+//Media-queries
+$tablet: (
+  max-width: 1050px
+);
+
+$phone: (
+  max-width: 585px
+);

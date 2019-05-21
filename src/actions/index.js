@@ -1,12 +1,12 @@
 /*
 _____AVAILABLE ACTIONS_____
-login() 
+login()
 register()
 
 */
 
 import axios from 'axios';
-import { axiosWithAuth } from '../components/auth/axiosWithAuth';
+// import { axiosWithAuth } from '../components/auth/axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

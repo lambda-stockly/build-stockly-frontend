@@ -1,26 +1,4 @@
-// Variables
-
-// Colors
-$cyan: #5ae5dd;
-$dark-navy: #0d122b;
-$faded-navy: #0d122b;
-$primary-color: $cyan;
-$secondary-color: $dark-navy;
-$accent-color: $faded-navy;
-$faded-cyan: #e0fcf9;
-$light-grey: #f9f9f9;
-$white: #fff;
-
-// Fonts
-$body-font-family: 'Merriweather Sans', sans-serif;
-$heading-font-family: 'Merriweather Sans', sans-serif;
-//Media-queries
-$tablet: (
-  max-width: 1050px
-);
-$phone: (
-  max-width: 585px
-);
+@import './variables.scss';
 
 html {
   box-sizing: border-box;

@@ -1,11 +1,12 @@
-@import '../../variables';
+@import '../../variables.scss';
 
 .StockInfo {
-  margin-left: 20px;
+  // margin-left: 20px;
 
   &__header {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
   }
 }
 
