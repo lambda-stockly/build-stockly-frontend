@@ -90,6 +90,7 @@ class StockInfo extends Component {
 
     const symbol = this.state.symbol;
     const obj = { ...this.state };
+
     this.props.addToWatchList(obj);
     console.log(`Add ${symbol} to this user's watchlist`);
   };
