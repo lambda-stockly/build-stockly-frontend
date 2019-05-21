@@ -1,12 +1,14 @@
 @import '../../variables.scss';
 
 .StockInfo {
-  // margin-left: 20px;
+  margin-top: 20px;
 
   &__header {
+    max-width: 580px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 
@@ -36,7 +38,7 @@
   align-items: center;
   text-align: center;
   padding: 8px 14px;
-  margin-left: 40px;
+  margin-top: 40px;
   cursor: pointer;
   // color: #ffffff;
   // background: #5ae5dd;

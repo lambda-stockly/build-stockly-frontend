@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1 className="logo">Σtock.ly</h1>
+        {/* <h1 className="logo">Σtock.ly</h1> */}
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={LogIn} />
         <PrivateRoute exact path="/" component={Stockly} />
