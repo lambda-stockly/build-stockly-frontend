@@ -4,13 +4,16 @@ import {
   LOGIN_SUCCESS,
   REGISTER_START,
   REGISTER_SUCCESS,
-  REGISTER_FAILURE
+  REGISTER_FAILURE,
+  SAVE_TO_WATCHLIST,
+  GET_WATCHLIST
 } from '../actions';
 
 const initialState = {
   isLoggingIn: false,
   isRegistering: false,
-  token: localStorage.getItem('token')
+  token: localStorage.getItem('token'),
+  watchList: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -45,6 +48,17 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isRegistering: false
+      };
+    case SAVE_TO_WATCHLIST:
+      return {
+        ...state,
+        watchList: [...state.watchList, action.payload]
+        // watchlist is an array of stock data. IF none are saved, display google microsoft, etc,
+        // ELSE display their current watchlist
+      };
+    case GET_WATCHLIST:
+      return {
+        watchList: state.watchList
       };
 
     default:

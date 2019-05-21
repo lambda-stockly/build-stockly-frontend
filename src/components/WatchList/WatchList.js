@@ -1,31 +1,28 @@
 import React, { Component } from 'react';
 import './WatchList.scss';
-export default class WatchList extends Component {
+import { getWatchlist } from '../../actions';
+import { connect } from 'react-redux';
+import WatchStocks from './WatchStocks';
+class WatchList extends Component {
   render() {
+    const watchListArray = this.props.watchList;
     return (
       <div className="watchlist-container">
         <h3>WatchList</h3>
-        <div className="company-container">
-          {/* company-container flex row  */}
-          {/* company-container children flex column  */}
-          <div className="watchlist-symbols watchlist">
-            <p>Symbol</p>
-            {/* watchlist.map */}
-          </div>
-          <div className="watchlist-lastprice watchlist">
-            <p>Last Price</p>
-            {/* watchlist.map */}
-          </div>
-          <div className="watchlist-change watchlist">
-            <p>Change</p>
-            {/* watchlist.map */}
-          </div>
-          <div className="watchlist-percent watchlist">
-            <p>% change</p>
-            {/* watchlist.map */}
-          </div>
-        </div>
+        {watchListArray.map((stock, i) => (
+          <WatchStocks key={i} index={i} stock={stock} />
+        ))}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    watchList: state.watchList
+  };
+};
+export default connect(
+  mapStateToProps,
+  { getWatchlist }
+)(WatchList);
