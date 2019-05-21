@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './StockInfo.scss';
 import axios from 'axios';
-
+import { connect } from 'react-redux';
+import { addToWatchList } from '../../actions';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class StockInfo extends Component {
@@ -73,11 +74,15 @@ class StockInfo extends Component {
 
   addToWatchlist = e => {
     e.preventDefault();
+
     const symbol = this.state.symbol;
+    const obj = { ...this.state };
+    this.props.addToWatchList(obj);
     console.log(`Add ${symbol} to this user's watchlist`);
   };
 
   render() {
+    console.log(this.props);
     let color;
     if (this.state.change < 0) {
       color = 'colorRed';
@@ -132,4 +137,14 @@ class StockInfo extends Component {
   }
 }
 
-export default StockInfo;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    watchList: state.watchList
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addToWatchList }
+)(StockInfo);
