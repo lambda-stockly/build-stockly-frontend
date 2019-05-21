@@ -1,33 +1,41 @@
 @import '../../variables.scss';
 
 .app-container {
-  // display: flex;
-  // flex-direction: column;
-  // width: 85%;
   max-width: 1000px;
   width: 90%;
   margin: 0 auto;
 }
 
-// .app-container button {
-//   margin: 0 auto;
-// }
-
 .app-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 15px;
+  padding: 15px 0 15px;
+  background-color: $secondary-color;
+
+  &-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-signout {
+    display: flex;
+    align-items: center;
+    color: $white;
+    cursor: pointer;
+
+    &-text {
+      margin-left: 5px;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
 }
 
-.app-header__left-section {
-  display: flex;
-  align-items: center;
-}
 .app-logo {
   line-height: 150%;
-  color: $secondary-color;
+  color: $white;
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
@@ -37,7 +45,13 @@
 
 .app-logo__sigma {
   font-family: Arial;
+  color: $white;
 }
 .app-logo__ly {
   color: $primary-color;
+}
+
+.app-main {
+  display: flex;
+  justify-content: space-between;
 }
