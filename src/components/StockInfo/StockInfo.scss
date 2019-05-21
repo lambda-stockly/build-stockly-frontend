@@ -1,0 +1,68 @@
+@import '../../variables';
+
+.StockInfo {
+  margin-left: 20px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.StockInfo__title {
+  margin-bottom: 5px;
+}
+
+.StockInfo__subtitle {
+  margin-top: 5px;
+  font-family: $body-font-family;
+  font-size: 12px;
+}
+
+.StockInfo__add-watchlist {
+  background: $white;
+  border: 1px solid #0d122b;
+  color: #0d122b;
+  border-radius: 4px;
+  box-shadow: 0px 1px 5px rgba(151, 162, 185, 0.2),
+    0px 3px 4px rgba(151, 162, 185, 0.12), 0px 2px 4px rgba(151, 162, 185, 0.14);
+  font-family: Merriweather Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 8px 14px;
+  margin-left: 40px;
+  cursor: pointer;
+  // color: #ffffff;
+  // background: #5ae5dd;
+  // box-shadow: 0px 1px 5px rgba(151, 162, 185, 0.2),
+  //   0px 3px 4px rgba(151, 162, 185, 0.12), 0px 2px 4px rgba(151, 162, 185, 0.14);
+  // border-radius: 4px;
+  // border: none;
+}
+
+.colorRed {
+  color: red;
+  margin-left: 15px;
+}
+.colorGreen {
+  color: green;
+  margin-left: 15px;
+}
+
+.StockInfo__price-and-change {
+  display: flex;
+}
+
+.StockInfo__details {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
