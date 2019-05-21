@@ -26,40 +26,48 @@ class LogIn extends Component {
 
   render() {
     return (
-      <div className="LogIn">
-        <h1
-          className="LogIn__Title"
-          style={{ textAlign: 'center', display: 'block' }}
-        >
-          Sign in
-        </h1>
-        <Link to="/register" style={{ textAlign: 'center', display: 'block' }}>
-          Register
-        </Link>
+      <div className="login-container">
+        <div className="cta-content">
+          <h1>Let's get back to trading.</h1>
+          <p>Do more stuff with Stockly.</p>
+        </div>
 
-        <form
-          className="LogIn__Form"
-          onSubmit={this.handleSubmit}
-          autoComplete="off"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            onChange={this.handleChanges}
-            value={this.state.value}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={this.handleChanges}
-            value={this.state.value}
-          />
-          <button type="submit">
-            {this.props.isLoggingIn ? <BeatLoader /> : 'Sign In'}
-          </button>
-        </form>
+        <div className="login-main">
+          <h1
+            className="login-title"
+            style={{ textAlign: 'center', display: 'block' }}
+          >
+            Sign in.
+          </h1>
+
+          <form
+            className="LogIn__Form"
+            onSubmit={this.handleSubmit}
+            autoComplete="off"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              onChange={this.handleChanges}
+              value={this.state.value}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={this.handleChanges}
+              value={this.state.value}
+            />
+            <button type="submit">
+              {this.props.isLoggingIn ? <BeatLoader /> : 'Sign In'}
+            </button>
+            <div className="alternative-cta">
+              <p>Not a member yet? </p>
+              <Link to="/register">Register</Link>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

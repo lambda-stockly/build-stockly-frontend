@@ -33,7 +33,7 @@ class Register extends Component {
         </div>
 
         <div className="register-main">
-          <h1>Sign Up</h1>
+          <h1>Get Started.</h1>
           <form
             className="register-form"
             onSubmit={this.handleSubmit}
@@ -63,7 +63,7 @@ class Register extends Component {
             <button type="submit">Sign In</button>
             <div className="alternative-cta">
               <p>Already have an account?</p>
-              <Link to="/login">login</Link>
+              <Link to="/login">Login</Link>
             </div>
           </form>
         </div>
