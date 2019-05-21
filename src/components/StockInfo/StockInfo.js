@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Sentiment from '../Sentiment';
 import './StockInfo.scss';
 import axios from 'axios';
 
@@ -16,15 +17,17 @@ class StockInfo extends Component {
     latestTradingDay: '',
     previousClose: '',
     change: '',
-    changePercent: ''
+    changePercent: '',
+    sentiment: {}
   };
 
   fetchData = symbol => {
-    const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
+    const APIUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
+    const serverUrl = `https://stockly-backend.herokuapp.com/stocks/${symbol}`;
+
     axios
-      .get(url)
+      .get(APIUrl)
       .then(res => {
-        console.log(res.data['Global Quote']);
         const data = res.data['Global Quote'];
         this.setState({
           open: data['02. open'],
@@ -36,6 +39,16 @@ class StockInfo extends Component {
           previousClose: data['08. previous close'],
           change: data['09. change'],
           changePercent: data['10. change percent']
+        });
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get(serverUrl)
+      .then(res => {
+        console.log(res.data.actionThresholds.Sentiment);
+        this.setState({
+          sentiment: res.data.actionThresholds.Sentiment
         });
       })
       .catch(err => console.log(err));
@@ -95,12 +108,6 @@ class StockInfo extends Component {
               Real Time Price. Currency in USD.
             </p>
           </div>
-          <button
-            onClick={this.addToWatchlist}
-            className="StockInfo__add-watchlist"
-          >
-            Add to Watchlist
-          </button>
         </div>
         {this.state.price !== undefined && (
           <div>
@@ -125,8 +132,16 @@ class StockInfo extends Component {
                 Volume <span>{this.state.volume}</span>
               </div>
             </div>
+            <button
+              onClick={this.addToWatchlist}
+              className="StockInfo__add-watchlist"
+            >
+              Add to Watchlist
+            </button>
           </div>
         )}
+
+        <Sentiment sentiment={this.state.sentiment} />
       </div>
     );
   }

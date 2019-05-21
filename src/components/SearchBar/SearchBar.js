@@ -99,7 +99,7 @@ class SearchBar extends React.Component {
     const { symbol, name } = selection;
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Enter keyword/symbol',
+      placeholder: 'Enter symbol or company name',
       value,
       onChange: this.onChange
     };

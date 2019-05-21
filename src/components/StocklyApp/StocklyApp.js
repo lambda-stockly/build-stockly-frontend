@@ -10,9 +10,16 @@ class StocklyApp extends Component {
   render() {
     return (
       <div className="app-container">
-        <button onClick={this.logout}>
-          <a href="/">logout</a>
-        </button>
+        <div className="app-header">
+          <h1 className="app-logo">
+            <span className="app-logo__sigma">Σ</span>tock
+            <span className="app-logo__ly">ly</span>
+          </h1>
+          <button onClick={this.logout}>
+            <a href="/">logout</a>
+          </button>
+        </div>
+
         <SearchBar />
         <WatchList />
       </div>
