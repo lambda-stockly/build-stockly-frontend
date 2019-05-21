@@ -46,9 +46,6 @@ export const register = creds => dispatch => {
     .catch(err => console.log(err));
 };
 
-//request data from alphavantage
-//axios with auth, display data
-
 // export const FETCHING_STOCKS = 'FETCH_STOCKS';
 // export const FETCH_STOCKS_SUCCESSFUL = 'FETCH_STOCKS_SUCCESSFUL';
 // export const FETCH_STOCKS_FAILURE = 'FETCH_STOCKS_FAILURE';
@@ -57,7 +54,6 @@ export const register = creds => dispatch => {
 
 export const SAVE_TO_WATCHLIST = 'SAVE_TO_WATCHLIST';
 export const addToWatchList = stockData => {
-  console.log(stockData);
   return {
     type: SAVE_TO_WATCHLIST,
     payload: stockData

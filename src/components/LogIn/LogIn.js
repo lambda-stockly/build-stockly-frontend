@@ -74,7 +74,6 @@ class LogIn extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state, 'current state');
   return {
     isLoggingIn: state.isLoggingIn
   };
