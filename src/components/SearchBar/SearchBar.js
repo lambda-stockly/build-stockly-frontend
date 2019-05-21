@@ -101,7 +101,8 @@ class SearchBar extends React.Component {
     const inputProps = {
       placeholder: 'Enter keyword/symbol',
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+      type: 'search'
     };
 
     // Finally, render it!
