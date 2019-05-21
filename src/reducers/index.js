@@ -38,7 +38,8 @@ export const rootReducer = (state = initialState, action) => {
       };
     case REGISTER_SUCCESS:
       return {
-        ...state
+        ...state,
+        isRegistering: false
       };
     case REGISTER_FAILURE:
       return {
