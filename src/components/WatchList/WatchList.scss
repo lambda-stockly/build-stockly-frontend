@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+
+.watchlist-container {
+  .company-container {
+    display: flex;
+    .watchlist {
+      display: flex;
+      flex-direction: column;
+      margin: 0 1em;
+    }
+  }
+}

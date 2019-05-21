@@ -13,6 +13,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const login = creds => dispatch => {
+  console.log(creds);
   //passes ({email, password}) payload to `/auth/login`, and server checks if they are correct, if so, res.data returns a token and User Object
   dispatch({ type: LOGIN_START });
   return axios

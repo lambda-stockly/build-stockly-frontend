@@ -24,7 +24,6 @@ class Register extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="register-container">
         <div className="cta-content">
@@ -60,7 +59,7 @@ class Register extends Component {
               onChange={this.handleChanges}
               value={this.state.value}
             />
-            <button type="submit">Sign In</button>
+            <button type="submit">Sign Up</button>
             <div className="alternative-cta">
               <p>Already have an account?</p>
               <Link to="/login">Login</Link>
