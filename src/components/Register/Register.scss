@@ -36,7 +36,7 @@
     border-left: 1px solid #efefef;
     padding: 1em;
     margin: 0 auto;
-    padding: 5em 2em;
+    padding: 4em 2em;
     @media #{$tablet} {
       border: 0px;
       width: 60%;
@@ -76,5 +76,5 @@
 }
 
 .logo {
-  padding: 0 0 0 1em;
+  padding: 0.5em 0 0 1em;
 }
