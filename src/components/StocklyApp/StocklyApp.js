@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './StocklyApp.scss';
 import SearchBar from '../SearchBar';
-
+import WatchList from '../WatchList/WatchList';
 class StocklyApp extends Component {
   logout = () => {
     localStorage.removeItem('token');
@@ -14,6 +14,7 @@ class StocklyApp extends Component {
           <a href="/">logout</a>
         </button>
         <SearchBar />
+        <WatchList />
       </div>
     );
   }
