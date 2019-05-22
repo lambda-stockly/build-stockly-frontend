@@ -65,12 +65,6 @@ class StockInfo extends Component {
 
   componentDidMount() {
     this.fetchData(this.state.symbol);
-
-    // const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=MSFT&apikey=${API_KEY}`;
-    // axios
-    //   .get(url)
-    //   .then(res => console.log(res))
-    //   .err(err => console.log(err));
   }
 
   componentDidUpdate(prevProps) {
@@ -154,7 +148,6 @@ class StockInfo extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     watchList: state.watchList
   };
