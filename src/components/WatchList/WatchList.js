@@ -6,19 +6,24 @@ import WatchStocks from './WatchStocks';
 class WatchList extends Component {
   render() {
     let watchListArray = this.props.watchList;
-    console.log(watchListArray);
     return (
       <div className="watchlist-container">
-        <h3>WatchList</h3>
-        <div className="company-container">
-          <p className="watchlist">Symbol</p>
-          <p className="watchlist">Last Price</p>
-          <p className="watchlist">Change</p>
-          <p className="watchlist">% Change</p>
-        </div>
-        {watchListArray.map((stock, i) => (
-          <WatchStocks key={i} index={i} stock={stock} />
-        ))}
+        <h4 className="watchlist-title">Watchlist / Portfolio</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Last Price</th>
+              <th>Change</th>
+              <th>% Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            {watchListArray.map((stock, i) => (
+              <WatchStocks key={i} index={i} stock={stock} />
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }

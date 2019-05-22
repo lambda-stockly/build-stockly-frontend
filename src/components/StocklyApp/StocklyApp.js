@@ -29,8 +29,12 @@ class StocklyApp extends Component {
         </div>
         <div className="app-container">
           <div className="app-main">
-            <SearchBar />
-            <WatchList />
+            <div>
+              <SearchBar />
+            </div>
+            <div>
+              <WatchList />
+            </div>
           </div>
         </div>
       </div>
