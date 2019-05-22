@@ -10,8 +10,6 @@ export function formatPriceChange(numAsStr) {
 }
 
 export function formatPercentChange(str) {
-  // const numOnly = parseFloat(str.split('%')[0], 10).toFixed(2);
-  return str;
-  // return Math.sign(numOnly) > 0 ? '+' numOnly + '%' : numOnly;
-  // return numOnly;
+  const numOnly = parseFloat(str.split('%')[0], 10).toFixed(2);
+  return Math.sign(numOnly) > 0 ? '+' + numOnly + '%' : numOnly + '%';
 }

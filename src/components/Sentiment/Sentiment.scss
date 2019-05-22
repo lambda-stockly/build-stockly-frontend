@@ -1,206 +1,210 @@
 @import '../../variables.scss';
 
-.Sentiment {
-  margin-top: 50px;
-}
+.action-thresholds {
+  display: flex;
 
-.sentiment-chart {
-  position: relative;
-  width: 350px;
-  height: 175px;
-  padding: 0;
-  list-style-type: none;
-  overflow: hidden;
-}
-
-.sentiment-chart::before,
-.sentiment-chart::after {
-  position: absolute;
-}
-
-.sentiment-chart::before {
-  content: '';
-  width: inherit;
-  height: inherit;
-  border: 45px solid rgba(211, 211, 211, 0.3);
-  border-bottom: none;
-  border-top-left-radius: 175px;
-  border-top-right-radius: 175px;
-}
-
-.sentiment-chart::after {
-  content: 'Sentiment Analysis';
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: cadetblue;
-}
-
-.sentiment-chart li {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: inherit;
-  height: inherit;
-  border: 45px solid;
-  border-top: none;
-  border-bottom-left-radius: 175px;
-  border-bottom-right-radius: 175px;
-  transform-origin: 50% 0;
-}
-
-.sentiment-chart li:nth-child(1) {
-  z-index: 4;
-  border-color: green;
-}
-
-.sentiment-chart li:nth-child(2) {
-  z-index: 3;
-  border-color: firebrick;
-}
-
-.sentiment-chart li:nth-child(3) {
-  z-index: 2;
-  border-color: steelblue;
-}
-
-.sentiment-chart li:nth-child(4) {
-  z-index: 1;
-  border-color: orange;
-}
-
-.sentiment-chart li {
-  animation-fill-mode: forwards;
-  animation-duration: 0.4s;
-  animation-timing-function: linear;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-.sentiment-chart li:nth-child(1) {
-  z-index: 4;
-  border-color: green;
-  animation-name: rotate-one;
-}
-
-.sentiment-chart li:nth-child(2) {
-  z-index: 3;
-  border-color: firebrick;
-  animation-name: rotate-two;
-  animation-delay: 0.4s;
-}
-
-.sentiment-chart li:nth-child(3) {
-  z-index: 2;
-  border-color: steelblue;
-  animation-name: rotate-three;
-  animation-delay: 0.8s;
-}
-
-.sentiment-chart li:nth-child(4) {
-  z-index: 1;
-  border-color: orange;
-  animation-name: rotate-four;
-  animation-delay: 1.2s;
-}
-
-@keyframes rotate-one {
-  100% {
-    transform: rotate(45deg);
-    /**
-     * 25% => 45deg
-     * 25/100 * 180 = 45
-     */
+  &__sentiment {
+    // margin-top: 50px;
   }
 }
 
-@keyframes rotate-two {
-  0% {
-    transform: rotate(45deg);
-  }
-  100% {
-    transform: rotate(135deg);
-    /**
-     * 50% => 90deg
-     * 90 + 45 => 135deg
-     */
-  }
-}
+// .sentiment-chart {
+//   position: relative;
+//   width: 350px;
+//   height: 175px;
+//   padding: 0;
+//   list-style-type: none;
+//   overflow: hidden;
+// }
 
-@keyframes rotate-three {
-  0% {
-    transform: rotate(135deg);
-  }
-  100% {
-    transform: rotate(180deg);
-    /**
-     * 25% => 45deg
-     * 45 + 135 => 180deg
-     */
-  }
-}
+// .sentiment-chart::before,
+// .sentiment-chart::after {
+//   position: absolute;
+// }
 
-// @keyframes rotate-four {
-//   0% {
-//     transform: rotate(140.4deg);
-//   }
+// .sentiment-chart::before {
+//   content: '';
+//   width: inherit;
+//   height: inherit;
+//   border: 45px solid rgba(211, 211, 211, 0.3);
+//   border-bottom: none;
+//   border-top-left-radius: 175px;
+//   border-top-right-radius: 175px;
+// }
+
+// .sentiment-chart::after {
+//   content: 'Sentiment Analysis';
+//   left: 50%;
+//   bottom: 10px;
+//   transform: translateX(-50%);
+//   font-size: 1.1rem;
+//   font-weight: bold;
+//   color: cadetblue;
+// }
+
+// .sentiment-chart li {
+//   position: absolute;
+//   top: 100%;
+//   left: 0;
+//   width: inherit;
+//   height: inherit;
+//   border: 45px solid;
+//   border-top: none;
+//   border-bottom-left-radius: 175px;
+//   border-bottom-right-radius: 175px;
+//   transform-origin: 50% 0;
+// }
+
+// .sentiment-chart li:nth-child(1) {
+//   z-index: 4;
+//   border-color: green;
+// }
+
+// .sentiment-chart li:nth-child(2) {
+//   z-index: 3;
+//   border-color: firebrick;
+// }
+
+// .sentiment-chart li:nth-child(3) {
+//   z-index: 2;
+//   border-color: steelblue;
+// }
+
+// .sentiment-chart li:nth-child(4) {
+//   z-index: 1;
+//   border-color: orange;
+// }
+
+// .sentiment-chart li {
+//   animation-fill-mode: forwards;
+//   animation-duration: 0.4s;
+//   animation-timing-function: linear;
+//   transform-style: preserve-3d;
+//   backface-visibility: hidden;
+// }
+
+// .sentiment-chart li:nth-child(1) {
+//   z-index: 4;
+//   border-color: green;
+//   animation-name: rotate-one;
+// }
+
+// .sentiment-chart li:nth-child(2) {
+//   z-index: 3;
+//   border-color: firebrick;
+//   animation-name: rotate-two;
+//   animation-delay: 0.4s;
+// }
+
+// .sentiment-chart li:nth-child(3) {
+//   z-index: 2;
+//   border-color: steelblue;
+//   animation-name: rotate-three;
+//   animation-delay: 0.8s;
+// }
+
+// .sentiment-chart li:nth-child(4) {
+//   z-index: 1;
+//   border-color: orange;
+//   animation-name: rotate-four;
+//   animation-delay: 1.2s;
+// }
+
+// @keyframes rotate-one {
 //   100% {
-//     transform: rotate(180deg);
+//     transform: rotate(45deg);
 //     /**
-//      * 22% => 39.6deg
-//      * 140.4 + 39.6 => 180deg
+//      * 25% => 45deg
+//      * 25/100 * 180 = 45
 //      */
 //   }
 // }
 
-.sentiment-chart span {
-  position: absolute;
-  font-size: 0.85rem;
-}
+// @keyframes rotate-two {
+//   0% {
+//     transform: rotate(45deg);
+//   }
+//   100% {
+//     transform: rotate(135deg);
+//     /**
+//      * 50% => 90deg
+//      * 90 + 45 => 135deg
+//      */
+//   }
+// }
 
-.sentiment-chart li:nth-child(1) span {
-  top: 5px;
-  left: 10px;
-  transform: rotate(-45deg);
-}
+// @keyframes rotate-three {
+//   0% {
+//     transform: rotate(135deg);
+//   }
+//   100% {
+//     transform: rotate(180deg);
+//     /**
+//      * 25% => 45deg
+//      * 45 + 135 => 180deg
+//      */
+//   }
+// }
 
-.sentiment-chart li:nth-child(2) span {
-  top: 20px;
-  left: 10px;
-  transform: rotate(-135deg);
-}
+// // @keyframes rotate-four {
+// //   0% {
+// //     transform: rotate(140.4deg);
+// //   }
+// //   100% {
+// //     transform: rotate(180deg);
+// //     /**
+// //      * 22% => 39.6deg
+// //      * 140.4 + 39.6 => 180deg
+// //      */
+// //   }
+// // }
 
-.sentiment-chart li:nth-child(3) span {
-  top: 18px;
-  left: 10px;
-  transform: rotate(-180deg);
-}
+// .sentiment-chart span {
+//   position: absolute;
+//   font-size: 0.85rem;
+// }
 
-.chart-skills span {
-  backface-visibility: hidden;
-  animation: fade-in 0.4s linear forwards;
-}
+// .sentiment-chart li:nth-child(1) span {
+//   top: 5px;
+//   left: 10px;
+//   transform: rotate(-45deg);
+// }
 
-.chart-skills li:nth-child(2) span {
-  animation-delay: 0.4s;
-}
+// .sentiment-chart li:nth-child(2) span {
+//   top: 20px;
+//   left: 10px;
+//   transform: rotate(-135deg);
+// }
 
-.chart-skills li:nth-child(3) span {
-  animation-delay: 0.8s;
-}
+// .sentiment-chart li:nth-child(3) span {
+//   top: 18px;
+//   left: 10px;
+//   transform: rotate(-180deg);
+// }
 
-.chart-skills li:nth-child(4) span {
-  animation-delay: 1.2s;
-}
+// .chart-skills span {
+//   backface-visibility: hidden;
+//   animation: fade-in 0.4s linear forwards;
+// }
 
-@keyframes fade-in {
-  0%,
-  90% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// .chart-skills li:nth-child(2) span {
+//   animation-delay: 0.4s;
+// }
+
+// .chart-skills li:nth-child(3) span {
+//   animation-delay: 0.8s;
+// }
+
+// .chart-skills li:nth-child(4) span {
+//   animation-delay: 1.2s;
+// }
+
+// @keyframes fade-in {
+//   0%,
+//   90% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }

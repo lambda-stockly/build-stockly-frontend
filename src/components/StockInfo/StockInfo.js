@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import Sentiment from '../Sentiment';
 import './StockInfo.scss';
 import axios from 'axios';
+import { axiosWithAuth } from '../auth/axiosWithAuth';
 import { connect } from 'react-redux';
 import { addToWatchList } from '../../actions';
+import {
+  formatPrice,
+  formatPercentChange,
+  formatPriceChange
+} from '../../helpers/formatNumbers';
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class StockInfo extends Component {
@@ -19,7 +26,8 @@ class StockInfo extends Component {
     previousClose: '',
     change: '',
     changePercent: '',
-    sentiment: {}
+    sentiment: {},
+    technicalAnalysis: {}
   };
 
   fetchData = symbol => {
@@ -44,15 +52,23 @@ class StockInfo extends Component {
       })
       .catch(err => console.log(err));
 
-    axios
+    axiosWithAuth()
       .get(serverUrl)
       .then(res => {
-        console.log(res.data);
-        // this.setState({
-        //   sentiment: res.data.actionThresholds.Sentiment
-        // });
+        // console.log(res.data.actionThresholds);
+        this.setState({
+          sentiment: res.data.actionThresholds.Sentiment,
+          technicalAnalysis: res.data.actionThresholds.TA
+        });
       })
       .catch(err => console.log(err));
+
+    // axiosWithAuth()
+    //   .get(`https://stockly-backend.herokuapp.com/top/searched`)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => console.log(err));
   };
 
   // fetchHistoricalData = symbol => {
@@ -109,24 +125,29 @@ class StockInfo extends Component {
             </p>
           </div>
         </div>
-        {this.state.price !== undefined && (
+        {this.state.price && (
           <div>
             <div className="StockInfo__price-and-change">
-              <h2>{Number(this.state.price)}</h2>
-              <h3 className={color}>{Number(this.state.change)}</h3>
-              <h3 className={color}>({this.state.changePercent})</h3>
+              <h2>{formatPrice(this.state.price)}</h2>
+              <h3 className={color}>{formatPriceChange(this.state.change)}</h3>
+              <h3 className={color}>
+                {formatPercentChange(this.state.changePercent)}
+              </h3>
             </div>
 
             <div>
               <div className="StockInfo__details">
-                Previous Close <span>{this.state.previousClose}</span>
+                Previous Close{' '}
+                <span>{formatPrice(this.state.previousClose)}</span>
               </div>
               <div className="StockInfo__details">
-                Open <span>{this.state.open}</span>
+                Open <span>{formatPrice(this.state.open)}</span>
               </div>
               <div className="StockInfo__details">
                 Day's Range{' '}
-                <span>{`${this.state.low} - ${this.state.high}`}</span>
+                <span>{`${formatPrice(this.state.low)} - ${formatPrice(
+                  this.state.high
+                )}`}</span>
               </div>
               <div className="StockInfo__details">
                 Volume <span>{this.state.volume}</span>
@@ -141,7 +162,12 @@ class StockInfo extends Component {
           </div>
         )}
 
-        <Sentiment sentiment={this.state.sentiment} />
+        {this.state.sentiment && (
+          <Sentiment
+            sentiment={this.state.sentiment}
+            technicalAnalysis={this.state.technicalAnalysis}
+          />
+        )}
       </div>
     );
   }
