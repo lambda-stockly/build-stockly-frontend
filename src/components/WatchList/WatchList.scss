@@ -2,6 +2,8 @@
 
 .watchlist-container {
   font-size: 14px;
+  position: relative;
+  padding-bottom: 20px;
 }
 
 .watchlist-title {
@@ -10,12 +12,15 @@
   margin-left: 10px;
 }
 
-.company-row-container {
-  display: flex;
-  justify-content: space-between;
-}
-
 table {
   border-collapse: separate;
   border-spacing: 10px;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  border: 1px solid $secondary-color;
+  cursor: pointer;
 }
