@@ -47,21 +47,21 @@ class StockInfo extends Component {
     axios
       .get(serverUrl)
       .then(res => {
-        console.log(res.data.actionThresholds.Sentiment);
-        this.setState({
-          sentiment: res.data.actionThresholds.Sentiment
-        });
+        console.log(res.data);
+        // this.setState({
+        //   sentiment: res.data.actionThresholds.Sentiment
+        // });
       })
       .catch(err => console.log(err));
   };
 
-  fetchHistoricalData = symbol => {
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
-    axios
-      .get(url)
-      .then(res => console.log(res))
-      .err(err => console.log(err));
-  };
+  // fetchHistoricalData = symbol => {
+  //   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
+  //   axios
+  //     .get(url)
+  //     .then(res => console.log(res))
+  //     .err(err => console.log(err));
+  // };
 
   componentDidMount() {
     this.fetchData(this.state.symbol);
