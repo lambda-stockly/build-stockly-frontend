@@ -39,7 +39,6 @@ const mapStateToProps = state => {
       })
     );
   });
-  console.log(uniqueArr);
 
   return {
     watchList: uniqueArr
