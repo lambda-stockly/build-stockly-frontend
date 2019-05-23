@@ -1,7 +1,9 @@
 @import '../../variables.scss';
 
 .StockInfo {
-  margin-top: 20px;
+  width: 400px;
+  margin-right: 40px;
+  margin-top: -20px;
 
   &__header {
     max-width: 580px;
