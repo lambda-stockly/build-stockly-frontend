@@ -1,7 +1,18 @@
 @import '../../variables.scss';
 
+.stock-info-stock-chart {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+// Stock Chart
+.rv-xy-plot {
+  align-self: flex-end;
+}
+
 .StockInfo {
-  width: 400px;
+  width: 350px;
   margin-right: 40px;
   margin-top: -20px;
 
@@ -42,19 +53,14 @@
   padding: 8px 14px;
   margin-top: 40px;
   cursor: pointer;
-  // color: #ffffff;
-  // background: #5ae5dd;
-  // box-shadow: 0px 1px 5px rgba(151, 162, 185, 0.2),
-  //   0px 3px 4px rgba(151, 162, 185, 0.12), 0px 2px 4px rgba(151, 162, 185, 0.14);
-  // border-radius: 4px;
-  // border: none;
 }
 
-.colorRed {
+.red {
   color: red;
   margin-left: 15px;
 }
-.colorGreen {
+
+.green {
   color: green;
   margin-left: 15px;
 }

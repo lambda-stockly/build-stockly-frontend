@@ -34,7 +34,8 @@ class StockChart extends Component {
         this.setState({ data });
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.note);
+        this.setState({ error: err.note });
       });
   };
 
@@ -50,7 +51,7 @@ class StockChart extends Component {
 
   render() {
     return (
-      <XYPlot xType="time" width={500} height={300}>
+      <XYPlot xType="time" width={600} height={300}>
         <HorizontalGridLines />
         <VerticalGridLines />
         <XAxis title="Date" />
