@@ -89,7 +89,7 @@ class SearchBar extends React.Component {
 
     // Finally, render it!
     return (
-      <div>
+      <>
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -98,13 +98,8 @@ class SearchBar extends React.Component {
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
         />
-        <div className="stock-info-stock-chart">
-          {this.state.selection.name && (
-            <StockInfo symbol={symbol} name={name} />
-          )}
-          {this.state.selection.name && <StockChart symbol={symbol} />}
-        </div>
-      </div>
+        {this.state.selection.name && <StockInfo symbol={symbol} name={name} />}
+      </>
     );
   }
 }
