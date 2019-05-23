@@ -3,6 +3,7 @@ import './Register.scss';
 import { register } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import financeRegister from '../../images/financeRegister.svg';
 class Register extends Component {
   state = {
     email: '',
@@ -28,7 +29,10 @@ class Register extends Component {
       <div className="register-container">
         <div className="cta-content">
           <h1>A smarter way to trade.</h1>
-          <p>do stuff smartly.</p>
+          <img
+            src={financeRegister}
+            style={{ display: 'block', width: '500px' }}
+          />
         </div>
 
         <div className="register-main">
@@ -74,7 +78,6 @@ class Register extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isRegistering: state.isRegistering,
     error: state.error

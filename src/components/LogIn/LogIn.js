@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions';
 import { BeatLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
+import financeLogin from '../../images/financeLogin.svg';
 class LogIn extends Component {
   state = {
     email: '',
@@ -18,19 +19,20 @@ class LogIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props);
     this.props.login({ ...this.state }).then(() => {
       this.props.history.push('/');
     });
   };
 
   render() {
-    console.log(this.props.error);
     return (
       <div className="login-container">
         <div className="cta-content">
+          <img
+            src={financeLogin}
+            style={{ display: 'block', width: '500px' }}
+          />
           <h1>Let's get back to trading.</h1>
-          <p>Do more stuff with Stockly.</p>
         </div>
 
         <div className="login-main">
