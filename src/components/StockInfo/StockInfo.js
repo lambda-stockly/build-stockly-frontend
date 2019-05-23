@@ -32,7 +32,7 @@ class StockInfo extends Component {
 
   fetchData = symbol => {
     const getQuoteUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
-    const getWeeklyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
+    // const getWeeklyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
     const getActionThresholds = `https://stockly-backend.herokuapp.com/stocks/${symbol}`;
 
     axios
@@ -51,12 +51,12 @@ class StockInfo extends Component {
           changePercent: data['10. change percent']
         });
 
-        return axios
-          .get(getWeeklyAdjusted)
-          .then(res => {
-            console.log(res.data['Weekly Adjusted Time Series']);
-          })
-          .catch(err => console.log(err));
+        // return axios
+        //   .get(getWeeklyAdjusted)
+        //   .then(res => {
+        //     console.log(res.data['Weekly Adjusted Time Series']);
+        //   })
+        //   .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
 
