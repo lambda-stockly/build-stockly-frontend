@@ -18,14 +18,12 @@ class LogIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props);
     this.props.login({ ...this.state }).then(() => {
       this.props.history.push('/');
     });
   };
 
   render() {
-    console.log(this.props.error);
     return (
       <div className="login-container">
         <div className="cta-content">

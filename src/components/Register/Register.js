@@ -74,7 +74,6 @@ class Register extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isRegistering: state.isRegistering,
     error: state.error
