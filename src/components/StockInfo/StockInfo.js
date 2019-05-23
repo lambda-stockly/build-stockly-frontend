@@ -26,16 +26,17 @@ class StockInfo extends Component {
     previousClose: '',
     change: '',
     changePercent: '',
-    sentiment: {},
-    technicalAnalysis: {}
+    sentiment: null,
+    technicalAnalysis: null
   };
 
   fetchData = symbol => {
-    const APIUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
-    const serverUrl = `https://stockly-backend.herokuapp.com/stocks/${symbol}`;
+    const getQuoteUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
+    const getWeeklyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
+    const getActionThresholds = `https://stockly-backend.herokuapp.com/stocks/${symbol}`;
 
     axios
-      .get(APIUrl)
+      .get(getQuoteUrl)
       .then(res => {
         const data = res.data['Global Quote'];
         this.setState({
@@ -49,35 +50,27 @@ class StockInfo extends Component {
           change: data['09. change'],
           changePercent: data['10. change percent']
         });
+
+        return axios
+          .get(getWeeklyAdjusted)
+          .then(res => {
+            console.log(res.data['Weekly Adjusted Time Series']);
+          })
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
 
     axiosWithAuth()
-      .get(serverUrl)
+      .get(getActionThresholds)
       .then(res => {
-        // console.log(res.data.actionThresholds);
+        console.log(res.data.actionThresholds);
         this.setState({
           sentiment: res.data.actionThresholds.Sentiment,
           technicalAnalysis: res.data.actionThresholds.TA
         });
       })
       .catch(err => console.log(err));
-
-    // axiosWithAuth()
-    //   .get(`https://stockly-backend.herokuapp.com/top/searched`)
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => console.log(err));
   };
-
-  // fetchHistoricalData = symbol => {
-  //   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
-  //   axios
-  //     .get(url)
-  //     .then(res => console.log(res))
-  //     .err(err => console.log(err));
-  // };
 
   componentDidMount() {
     this.fetchData(this.state.symbol);
@@ -97,16 +90,13 @@ class StockInfo extends Component {
 
   addToWatchlist = e => {
     e.preventDefault();
-
-    const symbol = this.state.symbol;
+    // const symbol = this.state.symbol;
     const obj = { ...this.state };
-
     this.props.addToWatchList(obj);
-    console.log(`Add ${symbol} to this user's watchlist`);
+    // console.log(`Add ${symbol} to this user's watchlist`);
   };
 
   render() {
-    // console.log(this.props);
     let color;
     if (this.state.change < 0) {
       color = 'colorRed';
@@ -162,7 +152,7 @@ class StockInfo extends Component {
           </div>
         )}
 
-        {this.state.sentiment && (
+        {this.state.sentiment !== null && (
           <Sentiment
             sentiment={this.state.sentiment}
             technicalAnalysis={this.state.technicalAnalysis}

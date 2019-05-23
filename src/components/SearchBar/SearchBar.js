@@ -2,10 +2,8 @@ import React from 'react';
 import './SearchBar.scss';
 import Autosuggest from 'react-autosuggest';
 import data from './data';
-// import axios from 'axios';
-// const API_KEY = process.env.REACT_APP_API_KEY;
 import StockInfo from '../StockInfo';
-
+import StockChart from '../StockChart';
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
@@ -61,22 +59,6 @@ class SearchBar extends React.Component {
     this.setState({
       value: newValue
     });
-    // this.setState(
-    //   {
-    //     value: newValue
-    //   },
-    //   () => {
-    //     const keywords = this.state.value;
-    //     const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keywords}&apikey=${API_KEY}`;
-    //     axios
-    //       .get(url)
-    //       .then(res => {
-    //         console.log(res.data.bestMatches);
-    //         this.setState({ suggestions: res.data.bestMatches });
-    //       })
-    //       .catch(err => console.log(err));
-    //   }
-    // );
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -116,7 +98,12 @@ class SearchBar extends React.Component {
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
         />
-        {this.state.selection.name && <StockInfo symbol={symbol} name={name} />}
+        <div className="stock-info-stock-chart">
+          {this.state.selection.name && (
+            <StockInfo symbol={symbol} name={name} />
+          )}
+          {this.state.selection.name && <StockChart symbol={symbol} />}
+        </div>
       </div>
     );
   }
