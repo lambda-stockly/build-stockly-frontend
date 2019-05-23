@@ -13,7 +13,8 @@ const initialState = {
   isLoggingIn: false,
   isRegistering: false,
   token: localStorage.getItem('token'),
-  watchList: []
+  watchList: [],
+  error: ''
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -26,12 +27,14 @@ export const rootReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isLoggingIn: false
+        isLoggingIn: false,
+        error: ''
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        isLoggingIn: false
+        isLoggingIn: false,
+        error: `*${action.payload}`
       };
 
     case REGISTER_START:

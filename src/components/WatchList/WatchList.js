@@ -18,7 +18,6 @@ class WatchList extends Component {
   };
   render() {
     let watchListArray = this.props.watchList;
-
     return !this.props.watchList.length ? null : (
       <div className="watchlist-container">
         <h4 className="watchlist-title">Watchlist / Portfolio</h4>

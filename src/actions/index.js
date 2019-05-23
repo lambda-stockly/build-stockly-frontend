@@ -11,7 +11,7 @@ import axios from 'axios';
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-
+export const LOGIN_FAILURE_ERROR = 'LOGIN_FAILURE_ERROR';
 export const login = creds => dispatch => {
   console.log(creds);
   //passes ({email, password}) payload to `/auth/login`, and server checks if they are correct, if so, res.data returns a token and User Object
@@ -23,7 +23,11 @@ export const login = creds => dispatch => {
       localStorage.setItem('token', res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
     })
-    .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err }));
+    .catch(err => {
+      console.log(err);
+      console.log(err.response);
+      dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
+    });
 };
 
 export const REGISTER_START = 'REGISTER_START';
@@ -43,7 +47,9 @@ export const register = creds => dispatch => {
 
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
     })
-    .catch(err => dispatch({ type: REGISTER_FAILURE, payload: err }));
+    .catch(err =>
+      dispatch({ type: REGISTER_FAILURE, payload: err.response.data.message })
+    );
 };
 
 // export const FETCHING_STOCKS = 'FETCH_STOCKS';
