@@ -3,7 +3,6 @@ import './SearchBar.scss';
 import Autosuggest from 'react-autosuggest';
 import data from './data';
 import StockInfo from '../StockInfo';
-import StockChart from '../StockChart';
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();

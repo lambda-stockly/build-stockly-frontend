@@ -4,6 +4,8 @@ import './StocklyApp.scss';
 import SearchBar from '../SearchBar';
 import WatchList from '../WatchList/WatchList';
 import { IoMdLogOut } from 'react-icons/io';
+import TopSearched from '../TopSearched';
+
 class StocklyApp extends Component {
   logout = () => {
     localStorage.removeItem('token');
@@ -33,6 +35,7 @@ class StocklyApp extends Component {
               <SearchBar />
             </div>
             <div>
+              <TopSearched />
               <WatchList />
             </div>
           </div>

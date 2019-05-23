@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.top-searched table {
+  font-size: 14px;
+  padding: 4px;
+  // border: 1px solid black;
+}
+
+.top-searched h5 {
+  background: $primary-color;
+  padding: 5px;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.top-searcched table tr {
+  border-bottom: 1px solid black;
+}
+// .top-searcched table tr
