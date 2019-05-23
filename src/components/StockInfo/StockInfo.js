@@ -10,7 +10,7 @@ import {
   formatPercentChange,
   formatPriceChange
 } from '../../helpers/formatNumbers';
-
+import StockChart from '../StockChart';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class StockInfo extends Component {
@@ -31,8 +31,10 @@ class StockInfo extends Component {
   };
 
   fetchData = symbol => {
+
     const APIUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
     const serverUrl = `https://stockly-backend.herokuapp.com/stocks/${symbol}`;
+
 
     axios
       .get(APIUrl)
@@ -140,24 +142,22 @@ class StockInfo extends Component {
               </h3>
             </div>
 
-            <div>
-              <div className="StockInfo__details">
-                Previous Close{' '}
-                <span>{formatPrice(this.state.previousClose)}</span>
-              </div>
-              <div className="StockInfo__details">
-                Open <span>{formatPrice(this.state.open)}</span>
-              </div>
-              <div className="StockInfo__details">
-                Day's Range{' '}
-                <span>{`${formatPrice(this.state.low)} - ${formatPrice(
-                  this.state.high
-                )}`}</span>
-              </div>
-              <div className="StockInfo__details">
-                Volume <span>{this.state.volume}</span>
+    const color = this.state.change < 0 ? 'red' : 'green';
+    return (
+      <div>
+        <div className="stock-info-stock-chart">
+          <div className="StockInfo">
+            <div className="StockInfo__header">
+              <div>
+                <h3 className="StockInfo__title">{`${this.state.name} (${
+                  this.state.symbol
+                })`}</h3>
+                <p className="StockInfo__subtitle">
+                  Real Time Price. Currency in USD.
+                </p>
               </div>
             </div>
+
             <button
               onClick={this.addToWatchlist}
               disabled={this.state.sentiment ? false : true}
@@ -167,6 +167,47 @@ class StockInfo extends Component {
             </button>
           </div>
         )}
+
+            {this.state.price && (
+              <div>
+                <div className="StockInfo__price-and-change">
+                  <h2>{formatPrice(this.state.price)}</h2>
+                  <h3 className={color}>
+                    {formatPriceChange(this.state.change)}
+                  </h3>
+                  <h3 className={color}>
+                    {formatPercentChange(this.state.changePercent)}
+                  </h3>
+                </div>
+                <div>
+                  <div className="StockInfo__details">
+                    Previous Close{' '}
+                    <span>{formatPrice(this.state.previousClose)}</span>
+                  </div>
+                  <div className="StockInfo__details">
+                    Open <span>{formatPrice(this.state.open)}</span>
+                  </div>
+                  <div className="StockInfo__details">
+                    Day's Range{' '}
+                    <span>{`${formatPrice(this.state.low)} - ${formatPrice(
+                      this.state.high
+                    )}`}</span>
+                  </div>
+                  <div className="StockInfo__details">
+                    Volume <span>{this.state.volume}</span>
+                  </div>
+                </div>
+                <button
+                  onClick={this.addToWatchlist}
+                  className="StockInfo__add-watchlist"
+                >
+                  Add to Watchlist
+                </button>
+              </div>
+            )}
+          </div>
+          <StockChart symbol={this.props.symbol} />
+        </div>
 
         {this.state.sentiment && (
           <Sentiment
