@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './WatchList.scss';
-import { getWatchlist } from '../../actions';
+import { getWatchlist, deleteFavorite } from '../../actions';
 import { connect } from 'react-redux';
 import WatchStocks from './WatchStocks';
 
@@ -8,7 +8,9 @@ class WatchList extends Component {
   state = {
     showDelete: false
   };
-
+  componentDidMount() {
+    this.props.getWatchlist();
+  }
   handleClick = e => {
     e.preventDefault();
     const showDelete = this.state.showDelete;
@@ -16,10 +18,12 @@ class WatchList extends Component {
       showDelete: !showDelete
     });
   };
+
   render() {
     let watchListArray = this.props.watchList;
+    console.log(this.props.watchList);
 
-    return !this.props.watchList.length ? null : (
+    return (
       <div className="watchlist-container">
         <h4 className="watchlist-title">Watchlist / Portfolio</h4>
         <table>
@@ -39,6 +43,7 @@ class WatchList extends Component {
                 index={i}
                 stock={stock}
                 showDelete={this.state.showDelete}
+                deleteFavorite={this.props.deleteFavorite}
               />
             ))}
           </tbody>
@@ -53,20 +58,13 @@ class WatchList extends Component {
 
 const mapStateToProps = state => {
   //takes watch state and removes duplicate entries
-  const uniqueArr = state.watchList.filter((stock, i, self) => {
-    return (
-      i ===
-      self.findIndex(items => {
-        return items.name === stock.name;
-      })
-    );
-  });
+  console.log(state);
 
   return {
-    watchList: uniqueArr
+    watchList: state.watchList
   };
 };
 export default connect(
   mapStateToProps,
-  { getWatchlist }
+  { getWatchlist, deleteFavorite }
 )(WatchList);

@@ -6,7 +6,7 @@ register()
 */
 
 import axios from 'axios';
-// import { axiosWithAuth } from '../components/auth/axiosWithAuth';
+import { axiosWithAuth } from '../components/auth/axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -53,18 +53,27 @@ export const register = creds => dispatch => {
 // export const getStockData = () => dispatch => {};
 
 export const SAVE_TO_WATCHLIST = 'SAVE_TO_WATCHLIST';
-export const addToWatchList = stockData => {
-  return {
-    type: SAVE_TO_WATCHLIST,
-    payload: stockData
+export const addToWatchList = stockData => dispatch => {
+  const ticker = {
+    ticker: stockData.symbol
   };
+  axiosWithAuth()
+    .post('https://stockly-backend.herokuapp.com/favorites', ticker)
+    .then(res => {
+      dispatch({ type: SAVE_TO_WATCHLIST, payload: res.data });
+    });
 };
 
 export const GET_WATCHLIST = 'GET_WATCHLIST';
-export const getWatchlist = watchList => ({
-  type: GET_WATCHLIST,
-  payload: watchList
-});
+export const getWatchlist = watchList => dispatch => {
+  //passes array of watchlist
+  axiosWithAuth()
+    .get('https://stockly-backend.herokuapp.com/favorites')
+    .then(res => {
+      dispatch({ type: GET_WATCHLIST, payload: res.data });
+    })
+    .catch(err => console.log(err));
+};
 
 export const FETCHING_WATCH_LIST = 'FETCHING_WATCH_LIST';
 export const GET_WATCH_LIST_SUCCESS = 'GET_WATCH_LIST_SUCCESS';
@@ -78,6 +87,20 @@ export const fetchWatchList = payload => dispatch => {
       console.log(res.data);
       localStorage.setItem('token', res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
+    })
+    .catch(err => console.log(err));
+};
+
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const REMOVE_FAVORITE_SUCCESS = 'REMOVE_FAVORITE_SUCCESS';
+export const deleteFavorite = ticker => dispatch => {
+  dispatch({ type: REMOVE_FAVORITE });
+  axiosWithAuth()
+    .delete('https://stockly-backend.herokuapp.com/favorites', {
+      data: { ...ticker }
+    })
+    .then(res => {
+      dispatch({ type: REMOVE_FAVORITE_SUCCESS, payload: res.data });
     })
     .catch(err => console.log(err));
 };
