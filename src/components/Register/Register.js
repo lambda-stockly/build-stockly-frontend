@@ -33,6 +33,9 @@ class Register extends Component {
 
         <div className="register-main">
           <h1>Get Started.</h1>
+          {!this.props.isRegistering ? (
+            <p style={{ color: 'red', fontSize: '1em' }}>{this.props.error}</p>
+          ) : null}
           <form
             className="register-form"
             onSubmit={this.handleSubmit}
@@ -73,7 +76,8 @@ class Register extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    isRegistering: state.isRegistering
+    isRegistering: state.isRegistering,
+    error: state.error
   };
 };
 export default connect(

@@ -25,6 +25,7 @@ class LogIn extends Component {
   };
 
   render() {
+    console.log(this.props.error);
     return (
       <div className="login-container">
         <div className="cta-content">
@@ -39,7 +40,9 @@ class LogIn extends Component {
           >
             Sign in.
           </h1>
-
+          {!this.props.isLoggingIn ? (
+            <p style={{ color: 'red', fontSize: '1em' }}>{this.props.error}</p>
+          ) : null}
           <form
             className="LogIn__Form"
             onSubmit={this.handleSubmit}
@@ -75,7 +78,8 @@ class LogIn extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggingIn: state.isLoggingIn
+    isLoggingIn: state.isLoggingIn,
+    error: state.error
   };
 };
 
