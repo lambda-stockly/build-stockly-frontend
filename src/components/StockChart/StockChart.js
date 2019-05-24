@@ -53,7 +53,7 @@ class StockChart extends Component {
     return this.state.error ? (
       <h4 style={{ color: 'red' }}>{this.state.error}</h4>
     ) : (
-      <XYPlot xType="time" width={550} height={300}>
+      <XYPlot xType="time" width={550} height={300} animation>
         <HorizontalGridLines />
         <VerticalGridLines />
         <XAxis title="Date" />
