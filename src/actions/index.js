@@ -91,3 +91,9 @@ export const removeFromWatchList = ticker => dispatch => {
       dispatch({ type: REMOVE_WATCHLIST_FAILURE, payload: err.message });
     });
 };
+
+export const MAKE_SEARCH_SELECTION = 'MAKE_SEARCH_SELECTION';
+
+export const makeSearchSelection = selection => dispatch => {
+  dispatch({ type: MAKE_SEARCH_SELECTION, payload: selection });
+};

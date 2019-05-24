@@ -7,7 +7,8 @@ import {
   REGISTER_FAILURE,
   ADD_WATCHLIST_SUCCESS,
   GET_WATCHLIST_SUCCESS,
-  REMOVE_WATCHLIST_SUCCESS
+  REMOVE_WATCHLIST_SUCCESS,
+  MAKE_SEARCH_SELECTION
 } from '../actions';
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
   isRegistering: false,
   token: localStorage.getItem('token'),
   watchList: [],
-  error: ''
+  error: '',
+  selectedStock: null
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -60,11 +62,18 @@ export const rootReducer = (state = initialState, action) => {
       };
     case GET_WATCHLIST_SUCCESS:
       return {
+        ...state,
         watchList: action.payload
       };
     case REMOVE_WATCHLIST_SUCCESS:
       return {
+        ...state,
         watchList: action.payload
+      };
+    case MAKE_SEARCH_SELECTION:
+      return {
+        ...state,
+        selectedStock: action.payload
       };
 
     default:
