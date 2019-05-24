@@ -27,7 +27,8 @@ class StockInfo extends Component {
     change: '',
     changePercent: '',
     sentiment: null,
-    technicalAnalysis: null
+    technicalAnalysis: null,
+    watchListError: null
   };
 
   fetchData = symbol => {
@@ -81,12 +82,23 @@ class StockInfo extends Component {
     }
   }
 
-  addToWatchlist = e => {
-    e.preventDefault();
-    // const symbol = this.state.symbol;
-    const obj = { ...this.state };
-    this.props.addToWatchList(obj);
-    // console.log(`Add ${symbol} to this user's watchlist`);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.symbol !== this.props.symbol) {
+      this.setState({
+        sentiment: null,
+        technicalAnalysis: null
+      });
+    }
+  }
+
+  addToWatchlist = () => {
+    if (this.props.watchList.length > 2) {
+      this.setState({
+        watchListError: 'Watchlist can only contain up to 3 stocks'
+      });
+    } else {
+      this.props.addToWatchList(this.state.symbol);
+    }
   };
 
   render() {
@@ -97,7 +109,7 @@ class StockInfo extends Component {
         <div className="stock-info-stock-chart">
           <div className="StockInfo">
             <div className="StockInfo__header">
-              <div>
+              <div style={{ position: 'relative' }}>
                 <h3 className="StockInfo__title">{`${this.state.name} (${
                   this.state.symbol
                 })`}</h3>
@@ -135,12 +147,21 @@ class StockInfo extends Component {
                     Volume <span>{this.state.volume}</span>
                   </div>
                 </div>
-                <button
-                  onClick={this.addToWatchlist}
-                  className="StockInfo__add-watchlist"
-                >
-                  Add to Watchlist
-                </button>
+                <div style={{ position: 'relative' }}>
+                  {this.state.sentiment && (
+                    <button
+                      onClick={this.addToWatchlist}
+                      className="StockInfo__add-watchlist"
+                    >
+                      Add to Watchlist
+                    </button>
+                  )}
+                  {this.state.watchListError && (
+                    <div className="Stock-info__watchlist-error">
+                      {this.state.watchListError}
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>

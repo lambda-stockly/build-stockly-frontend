@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import Stock from './Stock';
 import { axiosWithAuth } from '../auth/axiosWithAuth';
-// import axios from 'axios';
-import './TopSearched.scss';
-
 class TopSearched extends Component {
   state = {
     topSearched: []
   };
 
   componentDidMount() {
+    axiosWithAuth()
+      .get(`https://stockly-backend.herokuapp.com/favorites`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     axiosWithAuth()
       .get(`https://stockly-backend.herokuapp.com/top`)
       .then(res => {
@@ -26,7 +31,7 @@ class TopSearched extends Component {
   render() {
     return this.state.topSearched.length === 0 ? null : (
       <div className="top-searched">
-        <h5>Top Searched Stocks</h5>
+        <h4 className="table-title">Most Searched Stocks</h4>
         <table>
           <thead>
             <tr>
@@ -34,7 +39,6 @@ class TopSearched extends Component {
               <th>Price</th>
               <th>Change</th>
               <th>%Change </th>
-              <th />
             </tr>
           </thead>
           <tbody>

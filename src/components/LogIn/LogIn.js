@@ -5,6 +5,7 @@ import { login } from '../../actions';
 import { BeatLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 import financeLogin from '../../images/financeLogin.svg';
+
 class LogIn extends Component {
   state = {
     email: '',
@@ -31,6 +32,7 @@ class LogIn extends Component {
           <img
             src={financeLogin}
             style={{ display: 'block', width: '500px' }}
+            alt=""
           />
           <h1>Let's get back to trading.</h1>
         </div>
