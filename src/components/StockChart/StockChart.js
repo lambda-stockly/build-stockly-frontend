@@ -18,10 +18,10 @@ class StockChart extends Component {
 
   fetchData = symbol => {
     const API_KEY = process.env.REACT_APP_API_KEY;
-    const getWeeklyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${symbol}&apikey=${API_KEY}`;
+    const getMonthlyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${symbol}&apikey=${API_KEY}`;
 
     axios
-      .get(getWeeklyAdjusted)
+      .get(getMonthlyAdjusted)
       .then(res => {
         console.log(res.data);
         const obj = res.data['Monthly Time Series'];
