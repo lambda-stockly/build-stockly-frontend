@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './StocklyApp.scss';
 import SearchBar from '../SearchBar';
-import WatchList from '../WatchList/WatchList';
+// import WatchList from '../WatchList/WatchList';
 import { IoMdLogOut } from 'react-icons/io';
 import TopSearched from '../TopSearched';
 
@@ -36,7 +36,7 @@ class StocklyApp extends Component {
             </div>
             <div>
               <TopSearched />
-              <WatchList />
+              {/* <WatchList /> */}
             </div>
           </div>
         </div>
