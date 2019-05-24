@@ -23,7 +23,6 @@ class StockChart extends Component {
     axios
       .get(getMonthlyAdjusted)
       .then(res => {
-        console.log(res.data);
         const obj = res.data['Monthly Time Series'];
 
         const data = Object.entries(obj).map(arr => ({
