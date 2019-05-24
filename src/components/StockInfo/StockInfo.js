@@ -5,6 +5,7 @@ import axios from 'axios';
 import { axiosWithAuth } from '../auth/axiosWithAuth';
 import { connect } from 'react-redux';
 import { addToWatchList } from '../../actions';
+import { RingLoader } from 'react-spinners';
 import {
   formatPrice,
   formatPercentChange,
@@ -167,11 +168,16 @@ class StockInfo extends Component {
           </div>
           <StockChart symbol={this.props.symbol} />
         </div>
-        {this.state.sentiment && (
+        {this.state.sentiment ? (
           <Sentiment
             sentiment={this.state.sentiment}
             ta={this.state.technicalAnalysis}
           />
+        ) : (
+          <div className="StockInfo__loading-indicator">
+            <h4>Loading Sentiment and Technical Analysis</h4>
+            <RingLoader />
+          </div>
         )}
       </div>
     );
