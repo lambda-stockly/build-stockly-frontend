@@ -50,17 +50,17 @@ class StockInfo extends Component {
           change: data['09. change'],
           changePercent: data['10. change percent']
         });
-      })
-      .catch(err => console.log(err));
 
-    axiosWithAuth()
-      .get(getActionThresholds)
-      .then(res => {
-        console.log(res.data.actionThresholds);
-        this.setState({
-          sentiment: res.data.actionThresholds.Sentiment,
-          technicalAnalysis: res.data.actionThresholds.TA
-        });
+        return axiosWithAuth()
+          .get(getActionThresholds)
+          .then(res => {
+            console.log(res.data.actionThresholds);
+            this.setState({
+              sentiment: res.data.actionThresholds.Sentiment,
+              technicalAnalysis: res.data.actionThresholds.TA
+            });
+          })
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   };
@@ -149,7 +149,7 @@ class StockInfo extends Component {
         {this.state.sentiment && (
           <Sentiment
             sentiment={this.state.sentiment}
-            technicalAnalysis={this.state.technicalAnalysis}
+            ta={this.state.technicalAnalysis}
           />
         )}
       </div>

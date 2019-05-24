@@ -13,7 +13,6 @@ class TopSearched extends Component {
     axiosWithAuth()
       .get(`https://stockly-backend.herokuapp.com/top`)
       .then(res => {
-        console.log(res);
         const topSearched = [
           res.data[0].ticker,
           res.data[1].ticker,
@@ -25,31 +24,27 @@ class TopSearched extends Component {
   }
 
   render() {
-    if (this.state.topSearched.length > 0) {
-      return (
-        <div className="top-searched">
-          <h5>Top Searched Stocks</h5>
-          <table>
-            <thead>
-              <tr>
-                <th>Symbol</th>
-                <th>Last Price</th>
-                <th>Change</th>
-                <th>% Change</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.topSearched.map((stock, i) => (
-                <Stock key={i} stock={this.state.topSearched[i]} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      );
-    } else {
-      return <h1>Loading</h1>;
-    }
+    return this.state.topSearched.length === 0 ? null : (
+      <div className="top-searched">
+        <h5>Top Searched Stocks</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Price</th>
+              <th>Change</th>
+              <th>%Change </th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.topSearched.map((stock, i) => (
+              <Stock key={i} stock={this.state.topSearched[i]} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 }
 

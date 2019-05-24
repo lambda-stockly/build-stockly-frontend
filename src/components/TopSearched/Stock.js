@@ -23,7 +23,6 @@ class Stock extends Component {
         }&apikey=${API_KEY}`
       )
       .then(res => {
-        console.log(res.data['Global Quote']);
         this.setState({
           price: res.data['Global Quote']['05. price'],
           change: res.data['Global Quote']['09. change'],
@@ -32,9 +31,9 @@ class Stock extends Component {
       })
       .catch(err => {
         console.log(err);
-        // this.setState({
-        //   error:
-        // })
+        this.setState({
+          error: 'API Limit Reached'
+        });
       });
   }
 
