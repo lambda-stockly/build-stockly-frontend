@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import Stock from './Stock';
 import { axiosWithAuth } from '../auth/axiosWithAuth';
+
 class TopSearched extends Component {
   state = {
     topSearched: []
   };
 
   componentDidMount() {
-    axiosWithAuth()
-      .get(`https://stockly-backend.herokuapp.com/favorites`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
     axiosWithAuth()
       .get(`https://stockly-backend.herokuapp.com/top`)
       .then(res => {
