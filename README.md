@@ -4,18 +4,21 @@ This application uses the Alphavantage API and our own backend API to produce in
 - https://www.alphavantage.co/
 - https://stockly-backend.herokuapp.com/
 
-### Contribute to the project
+### Contribute To The Project
 - The project can use some UI polishing and just general UX improvement with loaders and color schema. If you wish to contribute and think you can improve on the project, we love all UI/UX developers. 
 - Some of the code like `<StockInfo/>` and `<TopSearched/>` need to be refactored to use Redux in some API calls. Refactoring the state to global mangement would improvce our ability to create stunning graphs and user experience.
-- This application has a need for many loaders in several areas given the majority of API calls. We've already included [react spinners](https://www.npmjs.com/package/react-spinners) in the project. Just add states boolean states to Redux, or if you know a better way to manage loaders, that's great too.
+- This application has a need for many loaders in several areas given the majority of API calls. We've already included [react spinners](https://www.npmjs.com/package/react-spinners) in the project. Just add boolean states to Redux, or if you know a better way to manage loaders, that's great too.
+- Consider contributing to our backend. We need more ways to reduce the number of API calls to alphavantage in order to deliver faster and scale.
+
 
 ## Direction For The Future
-In the future, we would love to implement even faster loading times for stock data and graphs. This is dependent on our data scientists and backend developers, so please consider contributing to them as well.
+In the future, we would love to implement even faster loading times for stock data and graphs. This is dependent on our data scientists and backend developers, so please consider contributing to them as well. 
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
