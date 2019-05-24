@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './StocklyApp.scss';
 import SearchBar from '../SearchBar';
-// import WatchList from '../WatchList/WatchList';
+import WatchList from '../WatchList';
 import { IoMdLogOut } from 'react-icons/io';
 import TopSearched from '../TopSearched';
 
@@ -31,13 +31,14 @@ class StocklyApp extends Component {
         </div>
         <div className="app-container">
           <div className="app-main">
+            <div className="app-main__stock-lists">
+              <TopSearched />
+              <WatchList />
+            </div>
             <div>
               <SearchBar />
             </div>
-            <div>
-              <TopSearched />
-              {/* <WatchList /> */}
-            </div>
+            <div />
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { register } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import financeRegister from '../../images/financeRegister.svg';
+
 class Register extends Component {
   state = {
     email: '',
@@ -32,6 +33,7 @@ class Register extends Component {
           <img
             src={financeRegister}
             style={{ display: 'block', width: '500px' }}
+            alt=""
           />
         </div>
 

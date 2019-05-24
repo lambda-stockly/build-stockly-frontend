@@ -5,8 +5,9 @@ import {
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
-  SAVE_TO_WATCHLIST,
-  GET_WATCHLIST
+  ADD_WATCHLIST_SUCCESS,
+  GET_WATCHLIST_SUCCESS,
+  REMOVE_WATCHLIST_SUCCESS
 } from '../actions';
 
 const initialState = {
@@ -52,16 +53,18 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         isRegistering: false
       };
-    case SAVE_TO_WATCHLIST:
+    case ADD_WATCHLIST_SUCCESS:
       return {
         ...state,
-        watchList: [...state.watchList, action.payload]
-        // watchlist is an array of stock data. IF none are saved, display google microsoft, etc,
-        // ELSE display their current watchlist
+        watchList: action.payload
       };
-    case GET_WATCHLIST:
+    case GET_WATCHLIST_SUCCESS:
       return {
-        watchList: state.watchList
+        watchList: action.payload
+      };
+    case REMOVE_WATCHLIST_SUCCESS:
+      return {
+        watchList: action.payload
       };
 
     default:
