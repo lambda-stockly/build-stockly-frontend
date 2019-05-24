@@ -33,7 +33,7 @@ class StockChart extends Component {
         this.setState({ data });
       })
       .catch(err => {
-        // console.log(err.note);
+        console.log(err);
         this.setState({ error: 'ERROR getting chart for this security' });
       });
   };
