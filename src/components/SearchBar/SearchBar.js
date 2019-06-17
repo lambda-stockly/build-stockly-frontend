@@ -14,7 +14,7 @@ const getSuggestions = value => {
   return inputLength === 0
     ? []
     : data.filter(
-        datum => datum.name.toLowerCase().slice(0, inputLength) === inputValue
+        datum => datum.name.toLowerCase().slice(0, inputLength) === inputValue || datum.symbol.toLowerCase().slice(0, inputLength) ===inputValue
       );
 };
 
