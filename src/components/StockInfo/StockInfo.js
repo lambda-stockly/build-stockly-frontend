@@ -111,9 +111,9 @@ class StockInfo extends Component {
           <div className="StockInfo">
             <div className="StockInfo__header">
               <div style={{ position: 'relative' }}>
-                <h3 className="StockInfo__title">{`${this.state.name} (${
+                <h2 className="StockInfo__title">{`${this.state.name} (${
                   this.state.symbol
-                })`}</h3>
+                })`}</h2>
                 <p className="StockInfo__subtitle">
                   Real Time Price. Currency in USD.
                 </p>

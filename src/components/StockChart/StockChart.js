@@ -33,7 +33,6 @@ class StockChart extends Component {
         this.setState({ data });
       })
       .catch(err => {
-        console.log(err);
         this.setState({ error: 'ERROR getting chart for this security' });
       });
   };
@@ -52,7 +51,13 @@ class StockChart extends Component {
     return this.state.error ? (
       <h4 style={{ color: 'red' }}>{this.state.error}</h4>
     ) : (
-      <XYPlot xType="time" width={550} height={300} animation>
+      <XYPlot
+        xType="time"
+        width={610}
+        height={400}
+        animation
+        margin={{ left: 50 }}
+      >
         <HorizontalGridLines />
         <VerticalGridLines />
         <XAxis title="Date" />

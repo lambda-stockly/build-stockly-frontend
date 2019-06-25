@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .app-container {
-  max-width: 1000px;
+  max-width: 1100px;
   width: 90%;
   margin: 0 auto;
 }
@@ -54,11 +54,9 @@
 .app-main__stock-lists {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
-
-@import '../../variables.scss';
 
 .watchlist {
   position: relative;
@@ -66,19 +64,22 @@
 
 .watchlist,
 .top-searched {
-  width: 48%;
+  width: 47%;
   height: 100%;
 }
 
 .watchlist table,
 .top-searched table {
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   padding: 4px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   border-spacing: 10px;
   border-collapse: separate;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .watchlist th,
@@ -92,6 +93,7 @@
   background: $faded-cyan;
   padding: 8px 10px;
   margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .watchlist table tr,
