@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './StocklyApp.scss';
+import { IoMdLogOut } from 'react-icons/io';
+import { connect } from 'react-redux';
 import SearchBar from '../SearchBar';
 import WatchList from '../WatchList';
 import StockInfo from '../StockInfo';
-import { IoMdLogOut } from 'react-icons/io';
 import TopSearched from '../TopSearched';
-import { connect } from 'react-redux';
+import backgroundImage from '../../images/analytics.svg';
+import './StocklyApp.scss';
 
 class StocklyApp extends Component {
   logout = () => {
@@ -44,6 +45,15 @@ class StocklyApp extends Component {
                   symbol={this.props.selectedStock.symbol}
                   name={this.props.selectedStock.name}
                 />
+              )}
+              {!this.props.selectedStock && (
+                <div className="bg-image-wrapper">
+                  <img
+                    className="bg-image"
+                    src={backgroundImage}
+                    alt="Man drawing a bar graph"
+                  />
+                </div>
               )}
             </div>
             <div />

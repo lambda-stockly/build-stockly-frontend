@@ -27,14 +27,16 @@ class StockInfo extends Component {
     previousClose: '',
     change: '',
     changePercent: '',
-    sentiment: null,
+    watchListError: null,
+    sentimentAnalysis: null,
     technicalAnalysis: null,
-    watchListError: null
+    historicalAnalysis: null,
+    futureAnalysis: null
   };
 
   fetchData = symbol => {
-    const getQuoteUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
     // const getWeeklyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
+    const getQuoteUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`;
     const getActionThresholds = `https://stockly-backend.herokuapp.com/stocks/${symbol}`;
 
     axios
@@ -57,9 +59,12 @@ class StockInfo extends Component {
           .get(getActionThresholds)
           .then(res => {
             console.log(res.data.actionThresholds);
+
             this.setState({
-              sentiment: res.data.actionThresholds.Sentiment,
-              technicalAnalysis: res.data.actionThresholds.TA
+              sentimentAnalysis: res.data.actionThresholds.Sentiment,
+              technicalAnalysis: res.data.actionThresholds.TA,
+              futureAnalysis: res.data.actionThresholds.Future,
+              historicalAnalysis: res.data.actionThresholds.Historical
             });
           })
           .catch(err => console.log(err));
@@ -86,8 +91,10 @@ class StockInfo extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.symbol !== this.props.symbol) {
       this.setState({
-        sentiment: null,
-        technicalAnalysis: null
+        sentimentAnalysis: null,
+        technicalAnalysis: null,
+        futureAnalysis: null,
+        historicalAnalysis: null
       });
     }
   }
@@ -149,7 +156,7 @@ class StockInfo extends Component {
                   </div>
                 </div>
                 <div style={{ position: 'relative' }}>
-                  {this.state.sentiment && (
+                  {this.state.sentimentAnalysis && (
                     <button
                       onClick={this.addToWatchlist}
                       className="StockInfo__add-watchlist"
@@ -168,10 +175,14 @@ class StockInfo extends Component {
           </div>
           <StockChart symbol={this.props.symbol} />
         </div>
-        {this.state.sentiment ? (
+        {this.state.sentimentAnalysis ? (
           <Sentiment
-            sentiment={this.state.sentiment}
-            ta={this.state.technicalAnalysis}
+            sentimentAnalysis={this.state.sentimentAnalysis}
+            technicalAnalysis={this.state.technicalAnalysis}
+            futureAnalysis={this.state.futureAnalysis}
+            historicalAnalysis={this.state.historicalAnalysis}
+            symbol={this.props.symbol}
+            company={this.props.name}
           />
         ) : (
           <div className="StockInfo__loading-indicator">
