@@ -9,6 +9,10 @@
 .app-header {
   padding: 15px 0 15px;
   background-color: $secondary-color;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 
   &-inner {
     display: flex;
@@ -49,6 +53,10 @@
 }
 .app-logo__ly {
   color: $primary-color;
+}
+
+.app-main {
+  padding-top: 90px;
 }
 
 .app-main__stock-lists {
@@ -110,4 +118,15 @@
     transform: scale(1.2);
     transition: all 0.2s ease;
   }
+}
+
+.bg-image-wrapper {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.bg-image {
+  width: 798px;
+  max-width: 100%;
+  margin-bottom: 5rem;
 }

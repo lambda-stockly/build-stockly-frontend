@@ -18,6 +18,7 @@ class Stock extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props.ticker);
     const API_KEY = process.env.REACT_APP_API_KEY;
     axios
       .get(

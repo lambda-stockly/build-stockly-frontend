@@ -6,9 +6,10 @@
   margin-top: 40px;
   flex-wrap: wrap;
 }
+
 // Stock Chart
 .rv-xy-plot {
-  align-self: flex-end;
+  // align-self: flex-end;
 }
 
 .StockInfo {
@@ -16,11 +17,8 @@
   margin-right: 40px;
 
   &__header {
-    // margin-bottom: 40px;
-    // max-width: 580px;
     display: flex;
     align-items: center;
-    // flex-wrap: wrap;
     justify-content: space-between;
   }
 }
@@ -54,10 +52,18 @@
   margin-top: 40px;
   cursor: pointer;
   position: relative;
+  outline: none;
+  transition: all 0.2s ease;
 
   &:disabled {
     background: #ccc;
     color: darkgray;
+  }
+
+  &:hover {
+    background: $secondary-color;
+    color: white;
+    transition: all 0.2s ease;
   }
 }
 
@@ -66,9 +72,6 @@
   color: white;
   padding: 10px;
   border-radius: 4px;
-
-  // position: absolute;
-  // bottom: 5px;
 }
 
 .red {

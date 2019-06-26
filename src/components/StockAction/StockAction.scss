@@ -1,0 +1,26 @@
+.stock-action {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  margin-top: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 7rem;
+  letter-spacing: 1px;
+
+  &__sell {
+    background-color: red;
+    color: white;
+  }
+
+  &__buy {
+    background-color: green;
+    color: white;
+  }
+
+  &__hold {
+    background-color: lightgray;
+  }
+}
