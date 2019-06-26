@@ -65,13 +65,23 @@ class Sentiment extends Component {
           />
 
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            totam veniam nam reiciendis repudiandae quod obcaecati harum!
-            Quibusdam, ipsum dolorum.
+            The technical analysis was determined by a medley of technical
+            indicators that reveal price trends and patterns in a stock's
+            performance. Among the technical indicators we used are the Moving
+            Average Convergence Divergence (MACD)<sup>1</sup> and the stochastic
+            oscillator<sup>2</sup>.
+          </p>
+          <p>
+            <sup>1</sup>MACD is an indicator that shows the relationship between
+            two moving averages of a seurity's price.
+          </p>
+          <p>
+            <sup>2</sup>A stochastic oscillator is a momentum indicator used to
+            generate overbought and oversold trading signals.{' '}
           </p>
         </div>
         <div className="other-analysis">
-          <div className="analysis-flex">
+          <div className="other-analysis__heading">
             <div>
               <h3 className="other-analysis__title">Sentiment Analysis</h3>
             </div>
@@ -80,11 +90,20 @@ class Sentiment extends Component {
             </div>
           </div>
           <p className="other-analysis__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-            suscipit odit eaque recusandae facere sed nam dolor obcaecati
-            reprehenderit dolore?
+            Sentiment analysis was determined by compiling arbitrary sentiment
+            scores from a batch of recent tweets that mentioned{' '}
+            {`"${this.props.symbol}"`}. Sentiment was determined with the use of
+            an open source natural language processing toolkit called NLTK.
           </p>
-          <div className="analysis-flex">
+          <p className="disclaimer">
+            <em>
+              The correlation between stock returns and public sentiment is a
+              topic that has been scrutinized heavily by academic research. We
+              recommend you research this area more before taking any actions
+              based on this information.
+            </em>
+          </p>
+          <div className="other-analysis__heading">
             <div>
               <h3 className="other-analysis__title">Historical Analysis</h3>
             </div>
@@ -93,11 +112,19 @@ class Sentiment extends Component {
             </div>
           </div>
           <p className="other-analysis__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-            ipsam numquam maxime minima ipsa excepturi iusto itaque nulla
-            mollitia beatae.
+            The historical determination is made by analysis of historical
+            returns.{' '}
           </p>
-          <div className="analysis-flex">
+
+          <p className="disclaimer">
+            <em>
+              The model may be underestimating extreme negative scenarios
+              unobserved in the historical period on which the determination was
+              based. Future returns may behave differently from historical
+              patterns.
+            </em>
+          </p>
+          <div className="other-analysis__heading">
             <div>
               <h3 className="other-analysis__title">Future Analysis</h3>
             </div>
@@ -106,9 +133,16 @@ class Sentiment extends Component {
             </div>
           </div>
           <p className="other-analysis__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facere
-            excepturi distinctio vero consequuntur cupiditate aliquam explicabo
-            ducimus nihil asperiores?
+            With the help of Facebook's open source project{' '}
+            <a
+              href="https://research.fb.com/prophet-forecasting-at-scale/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Prophet
+            </a>
+            , we are able to use Time Series data to determine the spread for a
+            given stock's price movement.
           </p>
         </div>
       </div>
