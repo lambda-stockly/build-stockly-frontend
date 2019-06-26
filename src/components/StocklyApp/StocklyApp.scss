@@ -130,3 +130,15 @@
   max-width: 100%;
   margin-bottom: 5rem;
 }
+
+footer {
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  background: $light-grey;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
