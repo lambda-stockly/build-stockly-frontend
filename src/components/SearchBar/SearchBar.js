@@ -14,7 +14,9 @@ const getSuggestions = value => {
   return inputLength === 0
     ? []
     : data.filter(
-        datum => datum.name.toLowerCase().slice(0, inputLength) === inputValue || datum.symbol.toLowerCase().slice(0, inputLength) ===inputValue
+        datum =>
+          datum.name.toLowerCase().slice(0, inputLength) === inputValue ||
+          datum.symbol.toLowerCase().slice(0, inputLength) === inputValue
       );
 };
 
@@ -48,7 +50,6 @@ class SearchBar extends React.Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = suggestion => {
-    console.log(suggestion);
     this.props.makeSearchSelection(suggestion);
     return `${suggestion.symbol}, ${suggestion.name}`;
   };
