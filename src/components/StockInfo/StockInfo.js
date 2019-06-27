@@ -5,7 +5,8 @@ import axios from 'axios';
 import { axiosWithAuth } from '../auth/axiosWithAuth';
 import { connect } from 'react-redux';
 import { addToWatchList } from '../../actions';
-import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/core';
+import { GridLoader } from 'react-spinners';
 import {
   formatPrice,
   formatPercentChange,
@@ -186,8 +187,11 @@ class StockInfo extends Component {
           />
         ) : (
           <div className="StockInfo__loading-indicator">
-            <h4>Loading Sentiment and Technical Analysis</h4>
-            <RingLoader />
+            <h3>
+              Analyzing {`${this.props.symbol}'s`} past performance and public
+              sentiment
+            </h3>
+            <GridLoader color={'#5ae5dd'} size={25} sizeUnit={'px'} />
           </div>
         )}
       </div>
