@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import Sentiment from '../Sentiment';
-import './StockInfo.scss';
 import axios from 'axios';
 import { axiosWithAuth } from '../auth/axiosWithAuth';
 import { connect } from 'react-redux';
 import { addToWatchList } from '../../actions';
-import { css } from '@emotion/core';
 import { GridLoader } from 'react-spinners';
+import StockChart from '../StockChart';
+import './StockInfo.scss';
+
 import {
   formatPrice,
   formatPercentChange,
   formatPriceChange
 } from '../../helpers/formatNumbers';
-import StockChart from '../StockChart';
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class StockInfo extends Component {
@@ -59,8 +60,6 @@ class StockInfo extends Component {
         return axiosWithAuth()
           .get(getActionThresholds)
           .then(res => {
-            console.log(res.data.actionThresholds);
-
             this.setState({
               sentimentAnalysis: res.data.actionThresholds.Sentiment,
               technicalAnalysis: res.data.actionThresholds.TA,
