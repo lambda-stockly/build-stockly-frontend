@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stock from './Stock';
-import { axiosWithAuth } from '../auth/axiosWithAuth';
+import { axiosWithAuth } from '../authentication/axiosWithAuth';
 
 class TopSearched extends Component {
   state = {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './LogIn.scss';
 import { connect } from 'react-redux';
 import { login } from '../../actions';
 import { BeatLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 import financeLogin from '../../images/financeLogin.svg';
+import './Auth.scss';
 
 class LogIn extends Component {
   state = {
@@ -34,16 +34,11 @@ class LogIn extends Component {
             style={{ display: 'block', width: '500px' }}
             alt=""
           />
-          <h1>Let's get back to trading.</h1>
+          <h1>Let's get back to trading</h1>
         </div>
 
         <div className="login-main">
-          <h1
-            className="login-title"
-            style={{ textAlign: 'center', display: 'block' }}
-          >
-            Sign in.
-          </h1>
+          <h1 style={{ textAlign: 'center' }}>Sign In</h1>
           {!this.props.isLoggingIn ? (
             <p style={{ color: 'red', fontSize: '1em' }}>{this.props.error}</p>
           ) : null}
@@ -67,11 +62,17 @@ class LogIn extends Component {
               value={this.state.value}
             />
             <button type="submit">
-              {this.props.isLoggingIn ? <BeatLoader /> : 'Sign In'}
+              {this.props.isLoggingIn ? (
+                <BeatLoader size={10} color="#fff" />
+              ) : (
+                'Sign In'
+              )}
             </button>
+
             <div className="alternative-cta">
-              <p>Not a member yet? </p>
-              <Link to="/register">Register</Link>
+              <p style={{ textAlign: 'center' }}>
+                Don't have an account? <Link to="/register">Sign up</Link>
+              </p>
             </div>
           </form>
         </div>

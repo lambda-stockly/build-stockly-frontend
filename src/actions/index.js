@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { axiosWithAuth } from '../components/auth/axiosWithAuth';
+import { axiosWithAuth } from '../components/authentication/axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

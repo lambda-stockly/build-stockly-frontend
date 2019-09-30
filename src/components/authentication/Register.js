@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './Register.scss';
+import { BeatLoader } from 'react-spinners';
 import { register } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import financeRegister from '../../images/financeRegister.svg';
+import './Auth.scss';
 
 class Register extends Component {
   state = {
@@ -13,9 +14,7 @@ class Register extends Component {
   };
 
   handleChanges = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
@@ -29,7 +28,7 @@ class Register extends Component {
     return (
       <div className="register-container">
         <div className="cta-content">
-          <h1>A smarter way to trade.</h1>
+          <h1>A smarter way to trade</h1>
           <img
             src={financeRegister}
             style={{ display: 'block', width: '500px' }}
@@ -38,7 +37,7 @@ class Register extends Component {
         </div>
 
         <div className="register-main">
-          <h1>Get Started.</h1>
+          <h1 style={{ textAlign: 'center' }}>Get Started</h1>
           {!this.props.isRegistering ? (
             <p style={{ color: 'red', fontSize: '1em' }}>{this.props.error}</p>
           ) : null}
@@ -68,10 +67,18 @@ class Register extends Component {
               onChange={this.handleChanges}
               value={this.state.value}
             />
-            <button type="submit">Sign Up</button>
+            <button>
+              {this.props.isRegistering ? (
+                <BeatLoader size={10} color="#fff" />
+              ) : (
+                'Sign Up'
+              )}
+            </button>
+
             <div className="alternative-cta">
-              <p>Already have an account?</p>
-              <Link to="/login">Login</Link>
+              <p style={{ textAlign: 'center' }}>
+                Have an account? <Link to="/login">Login</Link>
+              </p>
             </div>
           </form>
         </div>
@@ -79,12 +86,14 @@ class Register extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     isRegistering: state.isRegistering,
     error: state.error
   };
 };
+
 export default connect(
   mapStateToProps,
   { register }

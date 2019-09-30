@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sentiment from '../Sentiment';
 import axios from 'axios';
-import { axiosWithAuth } from '../auth/axiosWithAuth';
+import { axiosWithAuth } from '../authentication/axiosWithAuth';
 import { connect } from 'react-redux';
 import { addToWatchList } from '../../actions';
 import { GridLoader } from 'react-spinners';
@@ -118,9 +118,7 @@ class StockInfo extends Component {
           <div className="StockInfo">
             <div className="StockInfo__header">
               <div style={{ position: 'relative' }}>
-                <h2 className="StockInfo__title">{`${this.state.name} (${
-                  this.state.symbol
-                })`}</h2>
+                <h2 className="StockInfo__title">{`${this.state.name} (${this.state.symbol})`}</h2>
                 <p className="StockInfo__subtitle">
                   Real Time Price. Currency in USD.
                 </p>
