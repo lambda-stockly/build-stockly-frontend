@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.19.0",
     "react": "^16.10.1",
     "react-autosuggest": "^9.4.3",
     "react-dom": "^16.10.1",
@@ -11,7 +11,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.1",
     "react-scripts": "3.0.1",
-    "react-spinners": "^0.5.4",
+    "react-spinners": "^0.6.1",
     "react-vis": "^1.11.7",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
