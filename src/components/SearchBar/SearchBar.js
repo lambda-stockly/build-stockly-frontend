@@ -79,13 +79,12 @@ class SearchBar extends React.Component {
     const { value, suggestions } = this.state;
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Search for company by name',
+      placeholder: 'Search by symbol or name',
       value,
       onChange: this.onChange,
       type: 'search'
     };
 
-    // Finally, render it!
     return (
       <>
         <Autosuggest
