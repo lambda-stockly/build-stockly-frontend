@@ -23,8 +23,8 @@ class WatchList extends Component {
             </tr>
           </thead>
           <tbody>
-            {watchListArray.map((stock, i) => (
-              <Stock key={i} ticker={stock.ticker} />
+            {watchListArray.map(stock => (
+              <Stock key={stock.id} ticker={stock.ticker} />
             ))}
           </tbody>
         </table>
