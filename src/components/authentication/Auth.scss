@@ -45,9 +45,14 @@
       width: 400px;
     }
 
-    .alternative-cta a {
-      color: #0993fc;
-      text-decoration: none;
+    .alternative-cta {
+      p {
+        text-align: center;
+      }
+      a {
+        color: #0993fc;
+        text-decoration: none;
+      }
     }
 
     form {

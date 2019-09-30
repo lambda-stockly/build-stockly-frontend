@@ -4,7 +4,7 @@ import { register } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import financeRegister from '../../images/financeRegister.svg';
-import './Auth.scss';
+import './auth.scss';
 
 class Register extends Component {
   state = {
@@ -76,7 +76,7 @@ class Register extends Component {
             </button>
 
             <div className="alternative-cta">
-              <p style={{ textAlign: 'center' }}>
+              <p>
                 Have an account? <Link to="/login">Login</Link>
               </p>
             </div>

@@ -4,7 +4,7 @@ import { login } from '../../actions';
 import { BeatLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 import financeLogin from '../../images/financeLogin.svg';
-import './Auth.scss';
+import './auth.scss';
 
 class LogIn extends Component {
   state = {
@@ -26,6 +26,7 @@ class LogIn extends Component {
   };
 
   render() {
+    const { isLoggingIn } = this.props;
     return (
       <div className="login-container">
         <div className="cta-content">
@@ -39,7 +40,7 @@ class LogIn extends Component {
 
         <div className="login-main">
           <h1 style={{ textAlign: 'center' }}>Sign In</h1>
-          {!this.props.isLoggingIn ? (
+          {!isLoggingIn ? (
             <p style={{ color: 'red', fontSize: '1em' }}>{this.props.error}</p>
           ) : null}
           <form
@@ -62,15 +63,11 @@ class LogIn extends Component {
               value={this.state.value}
             />
             <button type="submit">
-              {this.props.isLoggingIn ? (
-                <BeatLoader size={10} color="#fff" />
-              ) : (
-                'Sign In'
-              )}
+              {isLoggingIn ? <BeatLoader size={10} color="#fff" /> : 'Sign In'}
             </button>
 
             <div className="alternative-cta">
-              <p style={{ textAlign: 'center' }}>
+              <p>
                 Don't have an account? <Link to="/register">Sign up</Link>
               </p>
             </div>
