@@ -18,16 +18,15 @@ class StockChart extends Component {
 
   fetchData = symbol => {
     const API_KEY = process.env.REACT_APP_API_KEY;
-    const getMonthlyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${symbol}&apikey=${API_KEY}`;
+    const getMonthlyAdjusted = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}`;
 
     axios
       .get(getMonthlyAdjusted)
       .then(res => {
-        const obj = res.data['Monthly Time Series'];
-
+        const obj = res.data['Monthly Adjusted Time Series'];
         const data = Object.entries(obj).map(arr => ({
           x: new Date(arr[0]).getTime(),
-          y: Number(parseFloat(arr[1]['4. close'], 10).toFixed(2))
+          y: Number(parseFloat(arr[1]['5. adjusted close'], 10).toFixed(2))
         }));
 
         this.setState({ data });
